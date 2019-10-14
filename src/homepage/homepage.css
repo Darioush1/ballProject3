@@ -1,0 +1,11 @@
+.home-page-main {
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: start;
+}
+
+.card {
+    height: 300px;
+    background-color: burlywood;
+}
