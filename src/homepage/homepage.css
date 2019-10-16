@@ -1,0 +1,10 @@
+.home-page-main {
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: start;
+}
+
+.card {
+    background-color: lightslategray;
+}
