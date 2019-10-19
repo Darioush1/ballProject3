@@ -12,7 +12,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <div className="App-header">
-          <h3 style={{fontSize: '50px', color: 'white'}}>GOAT</h3>
+          <h3 style={{fontSize: '75px'}}>Swish-Stats</h3>
           <HomePage/>
         </div>
       </div>
