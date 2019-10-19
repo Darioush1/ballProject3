@@ -7,11 +7,11 @@ class Stats extends React.Component {
         datasets: [
             {
                 label: 'Team Compare',
-                backgroundColor: 'rgba(255,99,132,0.2)',
-                borderColor: 'rgba(255,99,132,1)',
+                backgroundColor: '#FFC200',
+                borderColor: 'azure',
                 borderWidth: 1,
-                hoverBackgroundColor: 'rgba(255,99,132,0.4)',
-                hoverBorderColor: 'rgba(255,99,132,1)',
+                hoverBackgroundColor: '#00653A',
+                hoverBorderColor: 'azure',
                 data: [65, 59, 33]
             }
         ]
