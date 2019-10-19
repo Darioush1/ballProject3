@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background: #212121;
 }
 
 .App-logo {
@@ -7,7 +8,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #212121;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,5 +16,25 @@
 }
 
 .App-link {
-  color: #09d3ac;
+  color: #0EBFE9;
+}
+
+h3 { 
+    --interval: 1s;
+    display: block;
+    text-shadow: 
+      0 0 10px var(--color1),
+      0 0 20px var(--color2),
+      0 0 40px var(--color3),
+      0 0 80px var(--color4);
+    will-change: filter, color;
+    filter: saturate(60%);
+    animation: flicker steps(100) var(--interval) 1s infinite;
+    color: azure;
+    --color1: #FFC200;
+    --color2: #51FF0D;
+    --color3: #00653A;
+    --color4: #00653A;
+    font-family: 'Permanent Marker', cursive;
+  
 }
