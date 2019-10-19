@@ -56,42 +56,42 @@ class HomePage extends React.Component {
 
     render() {
         return (
-            <div style={{ marginTop: '10px' }} className="container">
+            <div style={{ marginTop: '30px' }} className="container">
                 <div className="row">
                     <div className="col">
-                        <h2 className="text-white">Compare Players</h2>
+                        <h2 className="text-white">COMPARE PLAYERS</h2>
                         <div className="card">
                             <div className="card-body">
-                                <h5 className="card-title">Enter Player Names</h5>
+                                <h5 className="card-title">ENTER PLAYER NAMES</h5>
                                 <form onSubmit={this.submitPlayers}>
                                     <div className="form-group">
-                                        <label htmlFor="playerName1">Player Name 1</label>
+                                        <label htmlFor="playerName1">PLAYER NAME 1</label>
                                         <input type="text" value={this.state.player1} onChange={this.updatePlayer1} className="form-control" id="playerName1" aria-describedby="playerName1" placeholder="Enter Player Name 1" />
                                     </div>
                                     <div className="form-group">
-                                        <label htmlFor="playerName2">Player Name 2</label>
+                                        <label htmlFor="playerName2">PLAYER NAME 2</label>
                                         <input type="text" value={this.state.player2} onChange={this.updatePlayer2} className="form-control" id="playerName2" aria-describedby="playerName2" placeholder="Enter Player Name 2" />
                                     </div>
-                                    <button type="submit" className="btn btn-primary">Submit</button>
+                                    <button type="submit" className="btn btn-primary">SUBMIT</button>
                                 </form>
                             </div>
                         </div>
                     </div>
                     <div className="col">
-                        <h2 className="text-white">Compare Teams</h2>
+                        <h2 className="text-white">COMPARE TEAMS</h2>
                         <div className="card">
                             <div className="card-body">
-                                <h5 className="card-title">Enter Team Names</h5>
+                                <h5 className="card-title">ENTER TEAM NAMES</h5>
                                 <form onSubmit={this.submitTeams}>
                                     <div className="form-group">
-                                        <label htmlFor="teamName1">Team Name 1</label>
+                                        <label htmlFor="teamName1">TEAM NAME 1</label>
                                         <input type="text" defaultValue={this.state.team1} onChange={() => {}} onBlur={this.updateTeam1} className="form-control" id="teamName1" aria-describedby="teamName1" placeholder="Enter Team Name 1" />
                                     </div>
                                     <div className="form-group">
-                                        <label htmlFor="teamName2">Team Name 2</label>
+                                        <label htmlFor="teamName2">TEAM NAME 2</label>
                                         <input type="text" defaultValue={this.state.team2} onChange={() => {}} onBlur={this.updateTeam2} className="form-control" id="teamName2" aria-describedby="teamName2" placeholder="Enter Team Name 2" />
                                     </div>
-                                    <button type="submit" className="btn btn-primary">Submit</button>
+                                    <button type="submit" className="btn btn-primary">SUBMIT</button>
                                 </form>
                             </div>
                         </div>
