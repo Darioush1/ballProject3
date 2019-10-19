@@ -1,15 +1,21 @@
-import getPlayer from "../utils/API"
+const getPlayer = require("../utils/API");
+const db = require("../models/Nbastat");
 
-const db = getPlayer();
+const apiCall = getPlayer()
 
 module.exports = {
     findAll: function (req, res) {
-
+        apiCall.then(
+            response => {
+                db.Nbastat.collection.insertMany(response)
+            }
+        )
         db.Nbastat.findAll({
-        }).then(function (dbNbastat) {
-            console.log(db.Nbastat)
-            res.json(dbNbastat);
-        });
+            
+         }).then(function(dbNBA) {
+            console.log(dbNBA)
+            res.json(dbNBA)
+        })
     },
 
     getPlayerA = function (req, res) {

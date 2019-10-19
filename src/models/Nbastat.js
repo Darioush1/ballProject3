@@ -25,6 +25,6 @@ const statsSchema = new Schema({
   player_efficiency_rating: { type: String}
 });
 
-const stats = mongoose.model("Stats", statsSchema);
+const Nbastat = mongoose.model("Stats", statsSchema);
 
-module.exports = stats;
+module.exports = Nbastat;

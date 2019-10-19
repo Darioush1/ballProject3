@@ -10,22 +10,17 @@ import JsApiReporter from 'jest-jasmine2/build/jasmine/JsApiReporter';
 
 class HomePage extends React.Component {
 
-    componentDidMount() {
-        this.apiPlayers();
-    }
+    // componentDidMount() {
+    //     this.apiPlayers();
+    // };
 
-    apiPlayers= () => {
-        API.getPlayers()
-            .then(res => this.setState({ player: res.data}))
-            .catch(err => console.log(err))
-    };
+    // apiPlayers= () => {
+    //     API.getPlayers()
+    //         .then(res => this.setState({ player: res.data}))
+    //         .catch(err => console.log(err))
+    // };
 
-    playerSet = event => {
-        const{name, values } = event.target;
-        this.setState({
-            name: values
-        })
-    };
+    
 
     constructor(props) {
         super(props);
@@ -43,8 +38,13 @@ class HomePage extends React.Component {
             submitted: false,
             data: {}
         };
-    }
-
+    };
+playerSet = event => {
+        const{name, values } = event.target;
+        this.setState({
+            name: values
+        })
+    };
     submitPlayers(e) {
         e.preventDefault();
         // console.log(this.state.player1, this.state.player2);
