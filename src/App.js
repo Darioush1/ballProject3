@@ -6,6 +6,10 @@ class App extends React.Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      players: [],
+      isLoaded: false
+    }
   }
 
   render() {

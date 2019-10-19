@@ -1,9 +1,31 @@
 import React from 'react';
 import './homepage.css';
+import API from '../utils/API';
 import Stats from '../stats/stats';
 import News from '../news/news';
+import JsApiReporter from 'jest-jasmine2/build/jasmine/JsApiReporter';
+
+// questions to ask: why my file structure fucked? calling the api in components mount; why am i not getting my shit; why m fucking evking everyone else over
+
 
 class HomePage extends React.Component {
+
+    componentDidMount() {
+        this.apiPlayers();
+    }
+
+    apiPlayers= () => {
+        API.getPlayers()
+            .then(res => this.setState({ player: res.data}))
+            .catch(err => console.log(err))
+    };
+
+    playerSet = event => {
+        const{name, values } = event.target;
+        this.setState({
+            name: values
+        })
+    };
 
     constructor(props) {
         super(props);
