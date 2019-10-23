@@ -1,5 +1,7 @@
 const getPlayer = require("../utils/API");
 const db = require("../models/Nbastat");
+const dbA = require("../models/TeamA.js");
+const dbB = require("../models/TeamB");
 
 const apiCall = getPlayer()
 
@@ -19,7 +21,7 @@ module.exports = {
     },
 
     getPlayerA: function (req, res) {
-        db.TeamA.findAll({
+        dbA.TeamA.findAll({
         }).then(function (dbTeamA) {
             console.log(db.TeamA)
             res.json(dbTeamA);
@@ -27,7 +29,7 @@ module.exports = {
     },
 
     getPlayerB: function (req, res) {
-        db.TeamB.findAll({
+        dbB.TeamB.findAll({
         }).then(function (dbTeamB) {
             console.log(db.TeamB)
             res.json(dbTeamB);
@@ -45,26 +47,26 @@ module.exports = {
     },
 
     createPlayerA: function (req, res) {
-        db.TeamA.create(req.body)
+        dbA.TeamA.create(req.body)
             .then(TeamA => res.json(TeamA))
             .catch(err => res.status(422).json(err));
     },
 
     createPlayerB: function (req, res) {
-        db.TeamB.create(req.body)
+        dbB.TeamB.create(req.body)
             .then(TeamB => res.json(TeamB))
             .catch(err => res.status(422).json(err));
     },
 
     // Delete an example by id
     deletePlayerA: function (req, res) {
-        db.TeamA.destroy({ where: {} }).then(function (dbTeamA) {
+        dbA.TeamA.destroy({ where: {} }).then(function (dbTeamA) {
             res.json(dbTeamA);
         });
     },
 
     deletePlayerB: function (req, res) {
-        db.TeamB.destroy({ where: {} }).then(function (dbTeamB) {
+        dbA.TeamB.destroy({ where: {} }).then(function (dbTeamB) {
             res.json(dbTeamB);
         });
     }
