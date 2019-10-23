@@ -18,7 +18,7 @@ module.exports = {
         })
     },
 
-    getPlayerA = function (req, res) {
+    getPlayerA: function (req, res) {
         db.TeamA.findAll({
         }).then(function (dbTeamA) {
             console.log(db.TeamA)
@@ -26,7 +26,7 @@ module.exports = {
         });
     },
 
-    getPlayerB = function (req, res) {
+    getPlayerB: function (req, res) {
         db.TeamB.findAll({
         }).then(function (dbTeamB) {
             console.log(db.TeamB)
@@ -34,7 +34,7 @@ module.exports = {
         });
     },
 
-    getPlayer = function (req, res) {
+    getPlayer: function (req, res) {
         db.Nbastat.findOne({
             where: {
                 id: req.params.id
@@ -57,13 +57,13 @@ module.exports = {
     },
 
     // Delete an example by id
-    deletePlayerA = function (req, res) {
+    deletePlayerA: function (req, res) {
         db.TeamA.destroy({ where: {} }).then(function (dbTeamA) {
             res.json(dbTeamA);
         });
     },
 
-    deletePlayerB = function (req, res) {
+    deletePlayerB: function (req, res) {
         db.TeamB.destroy({ where: {} }).then(function (dbTeamB) {
             res.json(dbTeamB);
         });

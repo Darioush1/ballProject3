@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
 import HomePage from './homepage/homepage';
-// import { BrowserRouter as Router, Route} from "react-route-dom";
 import api from "./utils/API";
 
 class App extends React.Component {
