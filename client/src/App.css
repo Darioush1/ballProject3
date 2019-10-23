@@ -1,6 +1,7 @@
 .App {
   text-align: center;
-  background: white;
+  background: #212121;
+  color: azure;
 }
 
 .App-logo {
@@ -16,8 +17,10 @@
 }
 
 .App-link {
-  color: #0EBFE9;
+  color: #51FF0D;
 }
+
+
 
 h3 { 
     --interval: 1s;
@@ -40,6 +43,7 @@ h3 {
 }
 
 .App-Component {
-  margin: 150px auto 0 auto;
-  width: 600px;
+  margin: 30px auto 0 auto;
+  width: 50px;
 }
+

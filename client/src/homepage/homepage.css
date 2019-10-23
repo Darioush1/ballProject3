@@ -3,6 +3,7 @@
     flex-direction: row;
     align-items: start;
     justify-content: start;
+   
 }
 
 .card {
@@ -95,3 +96,4 @@ button.btn.btn-primary:after {
     50% { background-position: 400% 0; }
    
 }
+
