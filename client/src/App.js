@@ -27,7 +27,7 @@ export default class App extends Component {
           
            <Navigation />
         <main>
-          <Route path="/" exact component={HomePage} />
+         
           <Route
             path="/login"
             render={() => <LoginPage baseUrl={config.url} />}
@@ -39,7 +39,7 @@ export default class App extends Component {
       
         <div className="App-header">
           <h3 style={{ fontSize: '75px' }}>Swish-Stats</h3>
-          <HomePage />
+         
         </div>
         <div className="App-Component">
         {/* <AutoCompletText items={ Players }/>
@@ -62,8 +62,10 @@ export default class App extends Component {
             "C. J. McCollum"
           ]}
         /> */}
+        <HomePage />
       </div>
     );
   }
 }
+
 
