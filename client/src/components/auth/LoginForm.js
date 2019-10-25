@@ -1,6 +1,7 @@
 import React from 'react';
 import OktaAuth from '@okta/okta-auth-js';
 import { withAuth } from '@okta/okta-react';
+import "./LoginForm.css";
 
 export default withAuth(
   class LoginForm extends React.Component {
