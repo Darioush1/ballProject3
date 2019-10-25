@@ -1,0 +1,46 @@
+input#username {
+    background-color: #212121;
+    color: azure;
+    border-radius: 5px;
+    font-size: 12px  
+}
+
+input#password {
+    background-color: #212121;
+    color: azure;
+    border-radius: 5px;
+    font-size: 12px  
+}
+
+input#email {
+    background-color: #212121;
+    color: azure;
+    border-radius: 5px;
+    font-size: 12px  
+}
+
+input#firstName {
+    background-color: #212121;
+    color: azure;
+    border-radius: 5px;
+    font-size: 12px  
+}
+
+input#lastName {
+    background-color: #212121;
+    color: azure;
+    border-radius: 5px;
+    font-size: 12px  
+}
+
+label {
+    font-size: 14px
+}
+
+input#submit {
+    background-color: #212121;
+    color: azure;
+    border-radius: 5px;
+    font-size: 12px  
+}
+
