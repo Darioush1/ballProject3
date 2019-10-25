@@ -8,6 +8,7 @@ import RegistrationForm from './components/auth/RegistrationForm';
 import config from './app.config';
 import LoginPage from './components/auth/LoginPage';
 import ProfilePage from './components/auth/ProfilePage';
+import api from './utils/API'
 // import { render } from "react-dom";
 import Autocomplete from "./components/Autocomplete";
 import AutoCompletText from "./components/AutoCompleteText/AutoCompleteText.js";
@@ -16,6 +17,12 @@ import Teams from "./components/Teams/Teams";
 
 
 export default class App extends Component {
+
+  componentDidMount(){
+    api.getPlayer().then(res => {
+      console.log(res);
+    })
+  };
 
   constructor(props) {
     super(props);
