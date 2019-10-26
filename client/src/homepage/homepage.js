@@ -50,6 +50,7 @@ class HomePage extends React.Component {
     }
 
     updateTeam1(e) {
+        
         this.setState({ team1: e.target.value });
     }
 

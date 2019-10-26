@@ -20,7 +20,7 @@ module.exports = {
         })
     },
 
-    getPlayerA: function (req, res) {
+    getTeamA: function (req, res) {
         dbA.TeamA.findAll({
         }).then(function (dbTeamA) {
             console.log(db.TeamA)
@@ -28,7 +28,7 @@ module.exports = {
         });
     },
 
-    getPlayerB: function (req, res) {
+    getTeamB: function (req, res) {
         dbB.TeamB.findAll({
         }).then(function (dbTeamB) {
             console.log(db.TeamB)

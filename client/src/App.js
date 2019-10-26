@@ -8,12 +8,28 @@ import RegistrationForm from './components/auth/RegistrationForm';
 import config from './app.config';
 import LoginPage from './components/auth/LoginPage';
 import ProfilePage from './components/auth/ProfilePage';
-import api from './utils/API'
+import api from './utils/API';
+import Nbastat from './models/Nbastat';
 // import { render } from "react-dom";
 import Autocomplete from "./components/Autocomplete";
 import AutoCompletText from "./components/AutoCompleteText/AutoCompleteText.js";
 import Players from "./components/Players/Players";
 import Teams from "./components/Teams/Teams";
+import { Mongoose } from 'mongoose';
+
+const express =  require('express');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const app = express();
+
+mongoose.connect(
+  process.env.MONGODB_URI || "mongodb://darioush2011@gmail.com:RIPsonics9596",
+  {
+    useCreateIndex: true,
+    useNewUrlParser: true
+  }
+);
+
 
 
 export default class App extends Component {
@@ -21,6 +37,14 @@ export default class App extends Component {
   componentDidMount(){
     api.getPlayer().then(res => {
       console.log(res);
+      Nbastat.create(res).then(
+        (function (NbastatPage) {
+          console.log(NbastatPage)
+        })
+        ).catch(function (err) {
+          console.log("mongoose database i messed up cause = " + err.message)
+        })
+
     })
   };
 
