@@ -23,7 +23,7 @@ const bodyParser = require('body-parser');
 const app = express();
 
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://darioush2011@gmail.com:RIPsonics9596",
+  process.env.MONGODB_URI || "mongodb://localhost/Nbastat",
   {
     useCreateIndex: true,
     useNewUrlParser: true
