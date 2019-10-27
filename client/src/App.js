@@ -18,11 +18,21 @@ import Teams from "./components/Teams/Teams";
 
 export default class App extends Component {
 
+  state = {
+    data: []
+  };
+
   componentDidMount(){
     api.getPlayer().then(res => {
-      console.log(res);
+      console.log(res.data[0]);
+      this.setState({
+        players: res.data
+      })
     })
+    console.log( this.state.players)
   };
+
+// console.log("outside " + this.state.data);
 
   constructor(props) {
     super(props);
