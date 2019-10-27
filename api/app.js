@@ -6,8 +6,11 @@ var logger = require('morgan');
 const mongoose = require('mongoose');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+const bodyParser = require('body-parser');
 
 var app = express();
+
+app.use(bodyParser.json());
 
 mongoose.connect(
   process.env.MONGODB_URI || "mongodb://localhost/Nbastat",
