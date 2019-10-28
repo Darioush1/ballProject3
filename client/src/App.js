@@ -30,6 +30,7 @@ export default class App extends Component {
         players: res.data
       })
     })
+    console.log( this.state.players)
   };
 
   addPlayer = event => {
@@ -38,6 +39,7 @@ export default class App extends Component {
       [name]: value
     })
   }
+
 
   constructor(props) {
     super(props);
