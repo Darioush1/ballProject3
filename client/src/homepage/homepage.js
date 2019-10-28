@@ -43,11 +43,11 @@ class HomePage extends React.Component {
     addPlayer = event => {
         let players = this.state.data;
         let playerName = players.map(players => players.name);
+        //this.props.input(value)
         console.log(playerName)
-        //  console.log(playerName)
-        //const name = {text};
+        
 
-
+        
     };
 
         constructor(props) {
