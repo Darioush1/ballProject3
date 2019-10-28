@@ -32,6 +32,13 @@ export default class App extends Component {
     })
   };
 
+  addPlayer = event => {
+    const {name, value} = event.target;
+    this.setState({
+      [name]: value
+    })
+  }
+
   constructor(props) {
     super(props);
   }
