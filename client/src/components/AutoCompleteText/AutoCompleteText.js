@@ -42,6 +42,7 @@ export default class AutoCompleteText extends React.Component {
         );
     }
 
+    // makes the input
     render() {
         const { text } = this.state;
         return (

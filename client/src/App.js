@@ -33,7 +33,13 @@ export default class App extends Component {
     console.log( this.state.players)
   };
 
-// console.log("outside " + this.state.data);
+  addPlayer = event => {
+    const {name, value} = event.target;
+    this.setState({
+      [name]: value
+    })
+  }
+
 
   constructor(props) {
     super(props);

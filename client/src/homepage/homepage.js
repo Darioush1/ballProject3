@@ -5,6 +5,7 @@ import News from '../news/news';
 import AutoCompleteText from "../components/AutoCompleteText/AutoCompleteText";
 import Players from "../components/Players/Players";
 import Teams from "../components/Teams/Teams";
+import PlayerSearch from '../components/playerSearch/playerSearch'
 
 class HomePage extends React.Component {
 
@@ -143,6 +144,7 @@ class HomePage extends React.Component {
                                     <div className="form-group">
                                         <label htmlFor="playerName2">PLAYER NAME 2</label>
                                         <AutoCompleteText items={Players}  />
+                                        {/* <PlayerSearch /> */}
                                         {/* <input type="text" value={this.state.player2} onChange={this.updatePlayer2} className="form-control" id="playerName2" aria-describedby="playerName2" placeholder="Enter Player Name 2" /> */}
                                     </div>
                                     <button type="submit" className="btn btn-primary">SUBMIT</button>
@@ -164,6 +166,7 @@ class HomePage extends React.Component {
                                     <div className="form-group">
                                         <label htmlFor="teamName2">TEAM NAME 2</label>
                                         <AutoCompleteText items={Teams} />
+                                        {/* this is where the input is */}
                                         {/* <input type="text" defaultValue={this.state.team2} onChange={() => { }} onBlur={this.updateTeam2} className="form-control" id="teamName2" aria-describedby="teamName2" placeholder="Enter Team Name 2" /> */}
                                     </div>
                                     <button type="submit" className="btn btn-primary">SUBMIT</button>
