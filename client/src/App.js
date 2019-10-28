@@ -12,34 +12,44 @@ import api from './utils/API'
 // import { render } from "react-dom";
 import Autocomplete from "./components/Autocomplete";
 import AutoCompletText from "./components/AutoCompleteText/AutoCompleteText.js";
-import Players from "./components/Players/Players";
-import Teams from "./components/Teams/Teams";
 
 
 
 export default class App extends Component {
 
+  // we might not need lines 21 through 50 here since I am calling them in the HomePage
   state = {
     data: []
   };
 
+  // const playerName = state.filter(function (state) {
+  //   return pilot.name;
+  // });
+  
   componentDidMount(){
-    api.getPlayer().then(res => {
-      console.log(res.data[0]);
+    api.getPlayers().then(res => {
       this.setState({
         players: res.data
       })
     })
-    console.log( this.state.players)
   };
 
+  // selectPlayer() {
+  //   for(var i = 0; i < state.length; i++) {
+  //     if (res.data[i].name == { name }) {
+  //   console.log(match)
+  // }
+  //   }
+  // }
+
   addPlayer = event => {
-    const {name, value} = event.target;
+    const {player, value} = event.target.value;
+    console.log(this.state)
+    console.log(event.target.value)
     this.setState({
-      [name]: value
+      [player]: value
     })
   }
-
 
   constructor(props) {
     super(props);

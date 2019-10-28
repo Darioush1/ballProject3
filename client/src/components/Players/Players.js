@@ -1,3 +1,11 @@
+// const playerName = state.filter(function (state) {
+//     return pilot.name;
+//   });
+  
+// console.log(playerName)
+
+// export default playerName
+
 export default `Álex Abrines
 Quincy Acy
 Jaylen Adams
