@@ -7,7 +7,8 @@ export default class AutoCompleteText extends React.Component {
         this.items = [];
         this.state = {
             suggestions: [],
-            text: ""
+            text: "",
+            id: this.props.id
 
         };
     }
@@ -46,7 +47,6 @@ export default class AutoCompleteText extends React.Component {
 
 
     render() {
-        console.log(this.state)
         const { text } = this.state;
         const userInput = this.state.text;
         console.log(userInput)

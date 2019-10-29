@@ -22,9 +22,11 @@ export default class App extends Component {
     data: []
   };
 
-  // const playerName = state.filter(function (state) {
-  //   return pilot.name;
-  // });
+  playerNamesOnly() {
+    let players = this.state.data;
+    const PlayerName = players.map( players => players.name);
+  console.log(PlayerName)
+  }
   
   componentDidMount(){
     api.getPlayers().then(res => {
@@ -34,22 +36,6 @@ export default class App extends Component {
     })
   };
 
-  // selectPlayer() {
-  //   for(var i = 0; i < state.length; i++) {
-  //     if (res.data[i].name == { name }) {
-  //   console.log(match)
-  // }
-  //   }
-  // }
-
-  addPlayer = event => {
-    const {player, value} = event.target.value;
-    console.log(this.state)
-    console.log(event.target.value)
-    this.setState({
-      [player]: value
-    })
-  }
 
   constructor(props) {
     super(props);
