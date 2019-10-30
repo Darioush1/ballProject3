@@ -7,7 +7,8 @@ export default class AutoCompleteText extends React.Component {
         this.items = [];
         this.state = {
             suggestions: [],
-            text: ""
+            text: "",
+            id: this.props.id
 
         };
     }
@@ -42,15 +43,24 @@ export default class AutoCompleteText extends React.Component {
         );
     }
 
-    // makes the input
+
+
+
     render() {
         const { text } = this.state;
+        const userInput = this.state.text;
+        console.log(userInput)
         return (
             <div className="AutoCompleteText">
-                <input value={text} onChange={this.onTextChanged} type="text" placeholder="Enter search criteria here" />
+                <input value={ text } onChange={this.onTextChanged} type="text" placeholder="Enter search criteria here" className= "userInput"/>
                 {this.renderSuggestions()}
             </div>
+            
         )
+
     }
+
+   
 }
+
 

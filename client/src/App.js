@@ -12,33 +12,29 @@ import api from './utils/API'
 // import { render } from "react-dom";
 import Autocomplete from "./components/Autocomplete";
 import AutoCompletText from "./components/AutoCompleteText/AutoCompleteText.js";
-import Players from "./components/Players/Players";
-import Teams from "./components/Teams/Teams";
 
 
 
 export default class App extends Component {
 
+  // we might not need lines 21 through 50 here since I am calling them in the HomePage
   state = {
     data: []
   };
 
+  playerNamesOnly() {
+    let players = this.state.data;
+    const PlayerName = players.map( players => players.name);
+  console.log(PlayerName)
+  }
+  
   componentDidMount(){
-    api.getPlayer().then(res => {
-      console.log(res.data[0]);
+    api.getPlayers().then(res => {
       this.setState({
         players: res.data
       })
     })
-    console.log( this.state.players)
   };
-
-  addPlayer = event => {
-    const {name, value} = event.target;
-    this.setState({
-      [name]: value
-    })
-  }
 
 
   constructor(props) {

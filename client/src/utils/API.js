@@ -1,9 +1,7 @@
 import axios from "axios";
 
 export default {
-    getPlayer: function () {
-        
-    console.log('works?');
+    getPlayers: function () {
         return axios.get("https://nba-players.herokuapp.com/players-stats")
     },
 

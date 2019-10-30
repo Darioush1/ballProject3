@@ -1,9 +1,12 @@
-import React, { Component } from "react";
-import uuid from 'uuid';
+import React from "react";
 
-class Player1 extends Component {
-    
+export default class playerSearch extends React.Component{
+    addPlayer = event => {
+        const {player, value} = event.target;
+        console.log(this.state)
+        console.log(event.target)
+        this.setState({
+          [player]: value
+        })
+      }
 }
-//let Player1 => ();
-
-export default Player1;
