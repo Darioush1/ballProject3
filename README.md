@@ -7,9 +7,9 @@ Login server running with Okta. Using local ports 3000/3001.
 
 Delete current package if dev and npm i again. 
 
-Navigate to the 'client' folder and run npm install @okta/okta-react react-router-dom --save
+Navigate to the 'client' folder and run npm install @okta/okta-react react-router-dom --save  && npm i mongoose
 
-Navigate to the 'api' folder and run npm install @okta/okta-sdk-nodejs --save
+Navigate to the 'api' folder and run npm install @okta/okta-sdk-nodejs --save && npm i mongoose
 
 run npm start in client folder and api folder
 

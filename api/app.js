@@ -3,11 +3,22 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
+const mongoose = require('mongoose');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+const bodyParser = require('body-parser');
 
 var app = express();
+
+app.use(bodyParser.json());
+
+mongoose.connect(
+  process.env.MONGODB_URI || "mongodb://localhost/Nbastat",
+  {
+    useCreateIndex: true,
+    useNewUrlParser: true
+  }
+);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

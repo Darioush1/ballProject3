@@ -13,9 +13,10 @@ class News extends React.Component {
                 newsObject.push(
                     <div className="card mb-3" key={i}>
                         <h4>{x.headline}</h4>
-                        {!!x.images &&
+                        {/* The line below crashes the app */}
+                        {/* {!!x.images &&
                             <img width="300px" src={x.images[0].url} />
-                        }
+                        } */}
                     </div>
                 );
             });
