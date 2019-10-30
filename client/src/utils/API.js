@@ -2,20 +2,21 @@ import axios from "axios";
 
 export default {
     getPlayers: function () {
+        console.log("getPlayers called")
         return axios.get("https://nba-players.herokuapp.com/players-stats")
     },
 
-    getPlayer1: function (id) {
-        console.log("player 1 id = ", id)
-        return axios.get("/api/players" + id);
+    // postAll: function () {
+    //     return axios.post('/api/NBA/allStats');
+    // },
+
+    testPlayer1: function() {
+        console.log("test")
+        return axios.post('/api/NBA/player1')
     },
 
-    deletePlayer: function (id) {
-        return axios.delete("/api/players" +  id)
-    },
-
-    savePlayer1: function (id) {
-        return axios.post("/api/player1")
+    savePlayer1: function (TeamA) {
+        return axios.post("https://localhost:3000/api/player1", TeamA)
     },
 
     savePlayer2: function(id) {

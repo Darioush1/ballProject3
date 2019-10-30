@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const teamBSchema = new Schema({
+const statsSchema = new Schema({
   name: { type: String },
   team_acronym: { type: String },
   team_name: { type: String},
@@ -25,6 +25,6 @@ const teamBSchema = new Schema({
   player_efficiency_rating: { type: String}
 });
 
-const teamBSchema = mongoose.model("Stats", teamBSchema);
+const PlayerStat = mongoose.model("nbastat", statsSchema);
 
-module.exports = teamBSchema;
+module.exports = PlayerStat;

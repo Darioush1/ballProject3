@@ -7,9 +7,12 @@ const mongoose = require('mongoose');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 const bodyParser = require('body-parser');
-
+const NBA = require('./routes/api/apiRoutes')
 var app = express();
 
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+app.use(express.static("public"));
 app.use(bodyParser.json());
 
 mongoose.connect(
@@ -19,6 +22,9 @@ mongoose.connect(
     useNewUrlParser: true
   }
 );
+
+// anything that has "app." all the following apps will have to /api/NBA
+app.use('/api/NBA', NBA)
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
