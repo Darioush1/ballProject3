@@ -2,35 +2,40 @@ input#username {
     background-color: #212121;
     color: azure;
     border-radius: 5px;
-    font-size: 12px  
+    font-size: 12px; 
+    margin: 7px;
 }
 
 input#password {
     background-color: #212121;
     color: azure;
     border-radius: 5px;
-    font-size: 12px  
+    font-size: 12px;
+    margin: 5px;
 }
 
 input#email {
     background-color: #212121;
     color: azure;
     border-radius: 5px;
-    font-size: 12px  
+    font-size: 12px;
+    margin: 5px;
 }
 
 input#firstName {
     background-color: #212121;
     color: azure;
     border-radius: 5px;
-    font-size: 12px  
+    font-size: 12px;
+    margin: 5px; 
 }
 
 input#lastName {
     background-color: #212121;
     color: azure;
     border-radius: 5px;
-    font-size: 12px  
+    font-size: 12px;
+    margin: 5px; 
 }
 
 label {
@@ -43,4 +48,3 @@ input#submit {
     border-radius: 5px;
     font-size: 12px  
 }
-

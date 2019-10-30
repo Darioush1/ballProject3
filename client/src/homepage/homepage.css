@@ -97,3 +97,9 @@ button.btn.btn-primary:after {
    
 }
 
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    color: #51FF0D;
+    background-color: #212121;
+    
+
+}
