@@ -61,7 +61,7 @@ export default withAuth(
         <form onSubmit={this.handleSubmit}>
           {errorMessage}
           <div className="form-element">
-            <label>Username:</label>
+            <label>Username</label>
             <input
               id="username"
               type="text"
@@ -71,7 +71,7 @@ export default withAuth(
           </div>
 
           <div className="form-element">
-            <label>Password:</label>
+            <label>Password</label>
             <input
               id="password"
               type="password"
