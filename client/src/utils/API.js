@@ -12,7 +12,7 @@ export default {
 
     testPlayer1: function() {
         console.log("test")
-        return axios.post('/api/NBA/player1')
+        return axios.post('/api/NBA')
     },
 
     savePlayer1: function (TeamA) {

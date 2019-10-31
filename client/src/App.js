@@ -13,33 +13,30 @@ import api from './utils/API'
 import Autocomplete from "./components/Autocomplete";
 import AutoCompletText from "./components/AutoCompleteText/AutoCompleteText.js";
 
-// const mongoose = require('mongoose');
-// const bodyParser = require('body-parser');
-//const Express = require('express')
-// var app = express();
-
-// app.use(bodyParser.json());
-
-// mongoose.connect(
-//   process.env.MONGODB_URI || "mongodb://localhost/Nbastat",
-//   {
-//     useCreateIndex: true,
-//     useNewUrlParser: true
-//   }
-// );
 
 export default class App extends Component {
 
-  // we might not need lines 21 through 50 here since I am calling them in the HomePage
-  state = {
-    data: []
-  };
+//   // we might not need lines 21 through 50 here since I am calling them in the HomePage
+//   state = {
+//     data: []
+//   };
 
-  // playerNamesOnly() {
-  //   let players = this.state.data;
-  //   const PlayerName = players.map( players => players.name);
-  // console.log(PlayerName)
-  // }
+//   componentDidMount() {
+//     //orignal api call that puts everything into state, not that it is not multiple arrays, its just how chrome shows. If you dont know what im talking about then dont worry about
+
+    
+//     api.getPlayers().then(res => {
+//         this.setState({ data: res.data });
+//     })
+
+//     // api.postAll({
+//     //     name: this.state.data[0].name
+//     // }).catch(err => console.log(err))
+
+//     api.testPlayer1().then(res =>{
+//         console.log("hello")
+//     })
+// };
 
 
 
@@ -68,26 +65,9 @@ render() {
 
       </div>
       <div className="App-Component">
-        {/* <AutoCompletText items={ Players }/>
-        <br /><br />
-        <AutoCompletText items={ Teams }/> */}
+        {}
       </div>
-      {/* <h1>React Autocomplete Demo</h1>
-        <h2>Start typing and experience the autocomplete wizardry!</h2>
-        <Autocomplete
-          suggestions={[
-            "LeBron James",
-            "Stephen Curry",
-            "Damien Lillard",
-            "James Harden",
-            "Klay Thompson",
-            "Kevin Durant",
-            "Kawhi Leonard",
-            "Giannis Antetokounmpo",
-            "Anthony Davis",
-            "C. J. McCollum"
-          ]}
-        /> */}
+      {}
       <HomePage />
     </div>
   );

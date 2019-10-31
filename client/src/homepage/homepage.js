@@ -6,7 +6,7 @@ import AutoCompleteText from "../components/AutoCompleteText/AutoCompleteText";
 import api from '../utils/API'
 import Players from "../components/Players/Players";
 import Teams from "../components/Teams/Teams";
-import API from '../utils/API';
+
 
 
 class HomePage extends React.Component {
@@ -19,45 +19,43 @@ class HomePage extends React.Component {
   
     componentDidMount() {
         //orignal api call that puts everything into state, not that it is not multiple arrays, its just how chrome shows. If you dont know what im talking about then dont worry about
-
-        
         api.getPlayers().then(res => {
             this.setState({ data: res.data });
-        })
-
-        // api.postAll({
-        //     name: this.state.data[0].name
-        // }).catch(err => console.log(err))
-
+        }).then(console.log("in side component did mount " + res.data))
         api.testPlayer1().then(res =>{
             console.log("hello")
         })
     };
 
+   
+
+    // api.postAll({
+    //     name: this.state.data[0].name
+    // }).catch(err => console.log(err))
 
     
 
-    //call for names only
-    playerNamesOnly() {
-        let players = this.state.data;
-        const PlayerName = players.map( players => players.name);
-      console.log(PlayerName)
-      }
+//     //call for names only
+//     playerNamesOnly() {
+//         let players = this.state.data;
+//         const PlayerName = players.map( players => players.name);
+//       console.log(PlayerName)
+//       }
 
     
 
-//api post route for player info
-    addPlayer = event => {
+// //api post route for player info
+//     addPlayer = event => {
         
-        const userInput = "LeBron James";
-        let players = this.state.data;
-        const choice = players.filter(players => players.name === userInput);
-        const choice1 = choice[0];
-        console.log(choice1);
-        API.savePlayer1({
-            name: choice1.name
-         }).then(res => choice1)
-    };
+//         const userInput = "LeBron James";
+//         let players = this.state.data;
+//         const choice = players.filter(players => players.name === userInput);
+//         const choice1 = choice[0];
+//         console.log(choice1);
+//         API.savePlayer1({
+//             name: choice1.name
+//          }).then(res => choice1)
+//     };
 
     constructor(props) {
         super(props);
@@ -139,36 +137,36 @@ class HomePage extends React.Component {
 
 
 
-    submitPlayers(e) {
-        e.preventDefault();
-        // console.log(this.state.player1, this.state.player2);
-    }
+    // submitPlayers(e) {
+    //     e.preventDefault();
+    //     // console.log(this.state.player1, this.state.player2);
+    // }
 
-    submitTeams(e) {
-        e.preventDefault();
-        fetch("http://site.api.espn.com/apis/site/v2/sports/basketball/nba/news")
-            .then(res => res.json())
-            .then(data => {
-                this.setState({ data: data, submitted: true });
-            });
-        // console.log(this.state.team1, this.state.team2);
-    }
+    // submitTeams(e) {
+    //     e.preventDefault();
+    //     fetch("http://site.api.espn.com/apis/site/v2/sports/basketball/nba/news")
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             this.setState({ data: data, submitted: true });
+    //         });
+    //     // console.log(this.state.team1, this.state.team2);
+    // }
 
-    updatePlayer1(e) {
-        this.setState({ player1: e.target.value });
-    }
+    // updatePlayer1(e) {
+    //     this.setState({ player1: e.target.value });
+    // }
 
-    updatePlayer2(e) {
-        this.setState({ player2: e.target.value });
-    }
+    // updatePlayer2(e) {
+    //     this.setState({ player2: e.target.value });
+    // }
 
-    updateTeam1(e) {
-        this.setState({ team1: e.target.value });
-    }
+    // updateTeam1(e) {
+    //     this.setState({ team1: e.target.value });
+    // }
 
-    updateTeam2(e) {
-        this.setState({ team2: e.target.value });
-    }
+    // updateTeam2(e) {
+    //     this.setState({ team2: e.target.value });
+    // }
 
     render() {
         return (

@@ -1,29 +1,32 @@
 const express = require("express");
 const app = express.Router();
-const Stat = require("../../models/Nbastat");
+const PlayerStat = require("../../models/Nbastat");
 // var playByPlay = require('nba-play-by-play');
 
-app.get('/')
 
-module.exports = function(app) {
+
+
   // Get all examples
 
-  //api/NBA
-  app.post("/allStats", (req,res) => {
-    const addStats = new Stat({
-      name: this.state.data.name,
+  // located at api/NBA
+  // initial call to the DB to get all the data
+  app.post("/", (req,res) => {
+    const addStats = new PlayerStat({
+      name: req.body.name
     })
-    addStats.save().then(stat => res.json(stat))
+
+    addStats.save().then(PlayerStat => res.json(PlayerStat))
   });
 
-  app.get("/allStats", (req,res) => {
-    Stat.find()
-      .then(player => res.json(player) )
+  // located at api/NBA
+  app.get("/", (req,res) => {
+    PlayerStat.find()
+      .then(PlayerStat => res.json(PlayerStat) )
   });
 
   app.delete("/", (req,res) => {
-    const addStats = new Stat()
-    addStats.save().then(stat => res.json(stat))
+    const addStats = new PLayerStat()
+    addStats.save().then(PlayerStat => res.json(PlayerStat))
   });
 
 //  api/NBA/player1
@@ -32,5 +35,6 @@ module.exports = function(app) {
   })
 
  
-};
 
+
+module.exports = app;

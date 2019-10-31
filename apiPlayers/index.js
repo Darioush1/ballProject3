@@ -1,12 +1,12 @@
 var express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const NBA = require("./routes/api/apiRoutes")
+const NBA = require("./routes/api/apiRoutes");
 
 var app = express();
 
 // Middleware
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
 
@@ -26,7 +26,7 @@ app.use('/api/NBA', NBA)
 // app.get('/express_backend', (req, res) => {
 //   res.send({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' });
 // });
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 3003;
 
 app.listen(port, () => console.log(`Server statrted on ${port}`))
 
