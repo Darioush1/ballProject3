@@ -6,16 +6,32 @@ nav {
 
 ul.auth-nav {
     display: inline-block;
-    padding: 7px;
-      
+    padding: 7px;  
 }
 
 a {
     color: azure;
+    font-size: 20px;
+    text-transform: capitalize;
+    color: azure;
+    font-weight: 300;
+    line-height: 35px;
+    letter-spacing: .1em;
+    border: 2px solid;
+    /* font-weight: 600; */
+    line-height: 35px;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    margin: 0px 10px;
+    padding: 2px 25px 0px 25px;
+    color: azure;
+    transition: color 0.1s linear 0s, background-color 0.1s linear 0s, opacity 0.2s linear 0s !important;
 
 }
 
 a:hover {
     color: #fff200;
+    text-decoration: none;
   
   }

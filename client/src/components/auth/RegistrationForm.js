@@ -84,7 +84,7 @@ export default withAuth(
       return (
         <form onSubmit={this.handleSubmit}>
           <div className="form-element">
-            <label>Email:</label>
+            <label>Email</label>
             <input
               type="email"
               id="email"
@@ -93,7 +93,7 @@ export default withAuth(
             />
           </div>
           <div className="form-element">
-            <label>First Name:</label>
+            <label>First Name</label>
             <input
               type="text"
               id="firstName"
@@ -102,7 +102,7 @@ export default withAuth(
             />
           </div>
           <div className="form-element">
-            <label>Last Name:</label>
+            <label>Last Name</label>
             <input
               type="text"
               id="lastName"
@@ -111,7 +111,7 @@ export default withAuth(
             />
           </div>
           <div className="form-element">
-            <label>Password:</label>
+            <label>Password</label>
             <input
               type="password"
               id="password"
