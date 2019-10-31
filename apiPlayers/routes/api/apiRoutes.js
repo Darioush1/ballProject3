@@ -14,7 +14,6 @@ const PlayerStat = require("../../models/Nbastat");
     const addStats = new PlayerStat({
       name: req.body.name
     })
-
     addStats.save().then(PlayerStat => res.json(PlayerStat))
   });
 

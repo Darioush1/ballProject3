@@ -6,17 +6,18 @@ export default {
         return axios.get("https://nba-players.herokuapp.com/players-stats")
     },
 
-    // postAll: function () {
-    //     return axios.post('/api/NBA/allStats');
-    // },
-
+    postAll: function () {
+        console.log("Post all called?");
+        return axios.post('/api/NBA');
+    },
+ 
     testPlayer1: function() {
         console.log("test")
         return axios.post('/api/NBA')
     },
 
     savePlayer1: function (TeamA) {
-        return axios.post("https://localhost:3000/api/player1", TeamA)
+        return axios.post("/api/player1", TeamA)
     },
 
     savePlayer2: function(id) {
