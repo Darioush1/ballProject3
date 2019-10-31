@@ -38,23 +38,15 @@ class HomePage extends React.Component {
                 name: names
             }).catch(err => console.log(err))
      });
+    };
+
+    get1 = () => {
+        api.get1().then(res => console.log("oh shit it worked? not the whole thing but the application call", res))
     }
 
    
 
-    // api.postAll({
-    //     name: this.state.data[0].name
-    // }).catch(err => console.log(err))
 
-    
-    
-
-//     //call for names only
-//     playerNamesOnly() {
-//         let players = this.state.data;
-//         const PlayerName = players.map( players => players.name);
-//       console.log(PlayerName)
-//       }
 
     
 
@@ -204,7 +196,7 @@ class HomePage extends React.Component {
                                         {/* <input type="text" value={this.state.player2} onChange={this.updatePlayer2} className="form-control" id="playerName2" aria-describedby="playerName2" placeholder="Enter Player Name 2" /> */}
                                     </div>
 
-                                    <button type="submit" className="btn btn-primary" onClick={this.addPlayer} >SUBMIT</button>
+                                    <button type="submit" className="btn btn-primary" onClick={this.get1()} >SUBMIT</button>
                                 </form>
                             </div>
                         </div>
@@ -226,7 +218,7 @@ class HomePage extends React.Component {
                                         {/* this is where the input is */}
                                         {/* <input type="text" defaultValue={this.state.team2} onChange={() => { }} onBlur={this.updateTeam2} className="form-control" id="teamName2" aria-describedby="teamName2" placeholder="Enter Team Name 2" /> */}
                                     </div>
-                                    <button type="submit" className="btn btn-primary" onClick={this.addPlayer} >SUBMIT</button>
+                                    <button type="submit" className="btn btn-primary" onClick={this.get1} >SUBMIT</button>
                                 </form>
                             </div>
                         </div>

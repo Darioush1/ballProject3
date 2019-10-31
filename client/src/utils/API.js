@@ -10,6 +10,11 @@ export default {
         console.log("Post all called?");
         return axios.post('/api/NBA');
     },
+
+    get1: function () {
+        console.log("get 1 called")
+        return axios.get('/')
+    },
  
     testPlayer1: function() {
         console.log("test")

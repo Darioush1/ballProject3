@@ -15,16 +15,18 @@ const PlayerStat = require("../../models/Nbastat");
       name: req.body.name
     })
     addStats.save().then(PlayerStat => res.json(PlayerStat))
+    console.log(PlayerStat)
   });
 
   // located at api/NBA
   app.get("/", (req,res) => {
     PlayerStat.find()
-      .then(PlayerStat => res.json(PlayerStat) )
+      .then(PlayerStat => res.json(PlayerStat))
+      console.log("findOne = ", PlayerStat)
   });
 
   app.delete("/", (req,res) => {
-    const addStats = new PLayerStat()
+    const addStats = new PlayerStat()
     addStats.save().then(PlayerStat => res.json(PlayerStat))
   });
 
