@@ -6,14 +6,15 @@ export default {
         return axios.get("https://nba-players.herokuapp.com/players-stats")
     },
 
-    postAll: function () {
+    postAll: function (all) {
+
         console.log("Post all called?");
-        return axios.post('/api/NBA');
+        return axios.post('http://localhost:3003/api/NBA/', all);
     },
 
     get1: function () {
         console.log("get 1 called")
-        return axios.get('/')
+        return axios.get('http://localhost:3003/api/NBA/', ).then(res => console.log("res of get1 ", res))
     },
  
     testPlayer1: function() {

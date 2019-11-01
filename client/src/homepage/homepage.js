@@ -9,6 +9,8 @@ import Teams from "../components/Teams/Teams";
 
 
 
+
+
 class HomePage extends React.Component {
 
 
@@ -31,17 +33,18 @@ class HomePage extends React.Component {
             this.setState({ data: res.data });
             const stats = res.data;
         console.log("stats is located here", stats);
-        const names = stats.map(stats => stats.name);
-        console.log("just the names ", names);
-
-    api.postAll({
-                name: names
-            }).catch(err => console.log(err))
+        // const names = stats.map(stats => stats.name);
+        
+            // console.log("names in load stat ", names)
+    api.postAll(
+                stats
+            ).then(console.log("names in post, ", stats)).catch(err => console.log(err))
      });
     };
 
     get1 = () => {
-        api.get1().then(res => console.log("oh shit it worked? not the whole thing but the application call", res))
+        // api.get1().then(res =>  console.log("get1 in homepage", res.data))
+        console.log("get1 funciton call")
     }
 
    
@@ -196,7 +199,7 @@ class HomePage extends React.Component {
                                         {/* <input type="text" value={this.state.player2} onChange={this.updatePlayer2} className="form-control" id="playerName2" aria-describedby="playerName2" placeholder="Enter Player Name 2" /> */}
                                     </div>
 
-                                    <button type="submit" className="btn btn-primary" onClick={this.get1()} >SUBMIT</button>
+                                    <button type="submit" className="btn btn-primary" onClick={this.get1} >SUBMIT</button>
                                 </form>
                             </div>
                         </div>
