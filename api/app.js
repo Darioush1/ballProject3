@@ -32,8 +32,6 @@ app.use('/api', indexRouter);
 app.use('/api/users', usersRouter);
 
 
-app.use('/api/stats', indexStats);
-app.use('/api/data', statsStats)
 
 var mysql = require("mysql");
 //Database connection
@@ -47,6 +45,10 @@ app.use(function(req, res, next){
 	res.locals.connection.connect();
 	next();
 });
+
+
+app.use('/api/stats', indexStats);
+app.use('/api/data', statsStats)
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
