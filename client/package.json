@@ -6,6 +6,7 @@
   "dependencies": {
     "@okta/okta-react": "^1.2.3",
     "chart.js": "^2.8.0",
+    "cors": "^2.8.5",
     "mongoose": "^5.7.7",
     "react": "^16.10.2",
     "react-chartjs-2": "^2.8.0",

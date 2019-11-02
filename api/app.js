@@ -3,10 +3,13 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var mysql = require("mysql");
+const cors = require("cors");
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var indexStats = require('./routes/api/expressRoutes');
 var statsStats = require('./routes/api/statsRoutes')
+var apiRoutes = require('./routes/api/apiRoutesSQL')
 const bodyParser = require('body-parser');
 var app = express();
 
@@ -14,7 +17,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static("public"));
 app.use(bodyParser.json());
-
+app.use(cors())
 
 
 
@@ -33,7 +36,6 @@ app.use('/api/users', usersRouter);
 
 
 
-var mysql = require("mysql");
 //Database connection
 app.use(function(req, res, next){
 	res.locals.connection = mysql.createConnection({
@@ -48,7 +50,8 @@ app.use(function(req, res, next){
 
 
 app.use('/api/stats', indexStats);
-app.use('/api/data', statsStats)
+app.use('/api/data', statsStats);
+app.use('/api/player1', apiRoutes);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
@@ -62,7 +65,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.render('error', err);
 });
 
 module.exports = app;

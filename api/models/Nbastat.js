@@ -1,5 +1,4 @@
-const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
+const 
 
 const statsSchema = new Schema({
   name: { type: String },

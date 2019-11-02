@@ -1,10 +1,11 @@
 import axios from "axios";
 
 export default {
-    // getPlayers: function () {
-    //     console.log("getPlayers called")
-    //     return axios.get("https://nba-players.herokuapp.com/players-stats")
-    // },
+    getPlayers: function (req,res) {
+        console.log("getPlayers called")
+        return axios.get("http://localhost:3001/api/player1/", );
+    },
+
 
     // postAll: function (all) {
 
