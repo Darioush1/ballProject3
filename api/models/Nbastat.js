@@ -1,5 +1,4 @@
-const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
+const 
 
 const statsSchema = new Schema({
   name: { type: String },
@@ -25,6 +24,6 @@ const statsSchema = new Schema({
   player_efficiency_rating: { type: String}
 });
 
-const Nbastat = mongoose.model("Stats", statsSchema);
+const PlayerStat = mongoose.model("PlayerStat", statsSchema);
 
-module.exports = Nbastat;
+module.exports = PlayerStat;
