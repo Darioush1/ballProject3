@@ -1,72 +1,56 @@
 var express = require('express');
-// const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
-const NBA = require("./routes/api/apiRoutes");
-const axios = require("axios");
-const PlayerStat = require("../apiPlayers/models/Nbastat");
+var path = require('path');
+var bodyParser = require('body-parser');
+var index = require('./routes/api/expressRoutes');
+var stats = require('./routes/api/statsRoutes')
+
 var app = express();
-var allStats= {};
 
-router.get('/', function(req, res, next) {
-  connection.query('SELECT * from members', function (error, results, fields) {
-   if (error) throw error;
-   res.send(JSON.stringify(results));
- });
+// // view engine setup
+// app.set('views', path.join(__dirname, 'views'));
+// app.set('view engine', 'jade');
+
+var mysql = require("mysql");
+//Database connection
+app.use(function(req, res, next){
+	res.locals.connection = mysql.createConnection({
+		host     : 'localhost',
+		user     : 'root',
+		password : 'RIPsonics9596',
+		database : 'nba_stats'
+	});
+	res.locals.connection.connect();
+	next();
 });
 
-// Middleware
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-app.use(express.static("public"));
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
-
+// uncomment after placing your favicon in /public
+//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, 'public')));
 
-// mongoose.connect(
-//   process.env.MONGODB_URI || "mongodb://localhost/Nbastat",
-//   {
-//     useCreateIndex: true,
-//     useNewUrlParser: true
-//   }
-// ).then(console.log("connected mongoose"));
+app.use('/', index);
+app.use('/stats', stats);
 
-// anything that has "app." all the following apps will have to /api/NBA
-app.use('/api/NBA', NBA)
-// app.get('/express_backend', (req, res) => {
-//   res.send({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' });
-// });
-const port = process.env.PORT || 3003;
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+  var err = new Error('Not Found');
+  err.status = 404;
+  next(err);
+});
 
-// function getPlayers() {
-//   console.log("getPlayers called")
-//   return axios.get("https://nba-players.herokuapp.com/players-stats").then((res) =>{
-//     let tempStats= [];
-//     tempStats = res;
-//     console.log(tempStats);
-//     return tempStats
-//   }).catch(err => console.log(err))
-// };
+// error handler
+app.use(function(err, req, res, next) {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
+  // render the error page
+  res.status(err.status || 500);
+  res.render('error');
+});
 
-// function postAll(pStats) {
-//   PlayerStat.create(pStats).then( stats => {
-//     console.log("inside postAll", stats);
-//   })
-//   .catch(err => console.log(err))
-
-// };
-
-// function initializeDataBase() {
-//   allStats = getPlayers();
-//   postAll(allStats);
-// };
-
-// initializeDataBase();
-
-
-app.listen(port, () => console.log(`Server statrted on ${port}`))
-
+var http = require('http');
+module.exports = app;
+var server = http.createServer(app);
+server.listen(4007);

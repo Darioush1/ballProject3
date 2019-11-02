@@ -12,6 +12,7 @@ function onAuthRequired({ history }) {
   history.push('/login');
 }
 
+
 ReactDOM.render(
   <Router>
     <Security

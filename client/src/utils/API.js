@@ -1,16 +1,16 @@
 import axios from "axios";
 
 export default {
-    getPlayers: function () {
-        console.log("getPlayers called")
-        return axios.get("https://nba-players.herokuapp.com/players-stats")
-    },
+    // getPlayers: function () {
+    //     console.log("getPlayers called")
+    //     return axios.get("https://nba-players.herokuapp.com/players-stats")
+    // },
 
-    postAll: function (all) {
+    // postAll: function (all) {
 
-        console.log("Post all called?");
-        return axios.post('http://localhost:3003/api/NBA/', all);
-    },
+    //     console.log("Post all called?");
+    //     return axios.post('http://localhost:3003/api/NBA/', all);
+    // },
 
     get1: function () {
         console.log("get 1 called")

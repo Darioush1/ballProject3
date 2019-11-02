@@ -5,6 +5,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var indexStats = require('./routes/api/expressRoutes');
+var statsStats = require('./routes/api/statsRoutes')
 const bodyParser = require('body-parser');
 var app = express();
 
@@ -30,6 +32,21 @@ app.use('/api', indexRouter);
 app.use('/api/users', usersRouter);
 
 
+app.use('/api/stats', indexStats);
+app.use('/api/data', statsStats)
+
+var mysql = require("mysql");
+//Database connection
+app.use(function(req, res, next){
+	res.locals.connection = mysql.createConnection({
+		host     : 'localhost',
+		user     : 'root',
+		password : 'RIPsonics9596',
+		database : 'nba_stats'
+	});
+	res.locals.connection.connect();
+	next();
+});
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

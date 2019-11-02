@@ -6,6 +6,12 @@ import AutoCompleteText from "../components/AutoCompleteText/AutoCompleteText";
 import api from '../utils/API'
 import Players from "../components/Players/Players";
 import Teams from "../components/Teams/Teams";
+// import App from React.createClass({
+//     getInitialState: function() {
+//       return {
+//         members: []
+//       };
+//     })
 
 
 
@@ -13,34 +19,24 @@ import Teams from "../components/Teams/Teams";
 
 class HomePage extends React.Component {
 
-
+    
     // DaRiOuSh you are commenting out bunch of line 50 through 172
    
     state = {
-        data: []
+        stats: []
     };
 
   
     componentDidMount() {
         //orignal api call that puts everything into state, not that it is not multiple arrays, its just how chrome shows. If you dont know what im talking about then dont worry about
-        this.loadStats();    
+        fetch('/')
+        .then(res => res.json())
+        .then(members => this.setState({ members: members }));   
       
     
     };
 
-    loadStats = () => {
-        api.getPlayers().then(res => {
-            this.setState({ data: res.data });
-            const stats = res.data;
-        console.log("stats is located here", stats);
-        // const names = stats.map(stats => stats.name);
-        
-            // console.log("names in load stat ", names)
-    api.postAll(
-                stats
-            ).then(console.log("names in post, ", stats)).catch(err => console.log(err))
-     });
-    };
+   
 
     get1 = () => {
         // api.get1().then(res =>  console.log("get1 in homepage", res.data))
