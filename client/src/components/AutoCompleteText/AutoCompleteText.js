@@ -8,8 +8,7 @@ export default class AutoCompleteText extends React.Component {
         this.state = {
             suggestions: [],
             text: "",
-            id: this.props.id
-
+            id: this.props.id,
         };
     }
 
@@ -21,7 +20,11 @@ export default class AutoCompleteText extends React.Component {
             const regex = new RegExp(`^${value}`, "i");
             suggestions = items.sort().filter(v => regex.test(v));
         }
+        
         this.setState(() => ({ suggestions, text: value }));
+        this.props.callBackFromParent(
+            this.state.text
+        );
     }
 
     suggestionSelected (value) {
@@ -38,21 +41,50 @@ export default class AutoCompleteText extends React.Component {
         }
         return (
             <ul>
-                {suggestions.map((item) => <li onClick={() => this.suggestionSelected(item)}>{item}</li>)}
+                {suggestions.map((item, index) => <li 
+                key = {index}
+                onClick={() => this.suggestionSelected(item)}>{item}</li>)}
             </ul>
         );
     }
 
+    addPlayer = event => {
+
+        let userInput = this.props;
+        let players = this.state.data;
+        const choice = players.filter(players => players.name === userInput);
+        const choice1 = choice[0];
+        //console.log(choice1);
+        // api.savePlayer1({
+        //     name: choice1.name
+        // })
+        //.then(res => {
+        //    console.log(choice1);
+            
+       // })
+    };
 
 
+    Input = event => {
+
+        const value = this.props.myCallback;
+        this.setState(() => ({userInput: value }))
+        event.preventDefault();
+        console.log("user input" + value)
+    }
+
+  
 
     render() {
         const { text } = this.state;
-        const userInput = this.state.text;
-        console.log(userInput)
         return (
             <div className="AutoCompleteText">
-                <input value={ text } onChange={this.onTextChanged} type="text" placeholder="Enter search criteria here" className= "userInput"/>
+                <input 
+                value={ text } 
+                onChange={this.onTextChanged} 
+                onSubmit={this.Input} 
+                type="text"
+                placeholder="Enter search criteria here" className= "userInput"/>
                 {this.renderSuggestions()}
             </div>
             
@@ -62,5 +94,4 @@ export default class AutoCompleteText extends React.Component {
 
    
 }
-
 

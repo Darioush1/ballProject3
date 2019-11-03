@@ -1,12 +1,20 @@
 import React from "react";
+import Array from "./playerArray";
 
-export default class playerSearch extends React.Component{
-    addPlayer = event => {
-        const {player, value} = event.target;
-        console.log(this.state)
-        console.log(event.target)
-        this.setState({
-          [player]: value
-        })
-      }
-}
+
+addPlayer = event => {
+
+    const userInput = "LeBron James";
+    let players = this.state.data;
+    const choice = players.filter(players => players.name === userInput);
+    const choice1 = choice[0];
+    console.log(choice1);
+    api.savePlayer1({
+        name: choice1.name
+    }).then(res => {
+        console.log(choice1);
+        
+    })
+};
+
+export default userInput
