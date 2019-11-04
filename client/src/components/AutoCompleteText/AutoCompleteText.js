@@ -2,6 +2,8 @@ import React from "react";
 import "./AutoCompleteText.css";
 
 export default class AutoCompleteText extends React.Component {
+
+   
     constructor(props) {
         super(props);
         this.items = [];
@@ -22,9 +24,6 @@ export default class AutoCompleteText extends React.Component {
         }
         
         this.setState(() => ({ suggestions, text: value }));
-        this.props.callBackFromParent(
-            this.state.text
-        );
     }
 
     suggestionSelected (value) {
@@ -71,6 +70,9 @@ export default class AutoCompleteText extends React.Component {
         this.setState(() => ({userInput: value }))
         event.preventDefault();
         console.log("user input" + value)
+        this.props.callBackFromParent(
+            this.state.text
+        );
     }
 
   
@@ -81,8 +83,7 @@ export default class AutoCompleteText extends React.Component {
             <div className="AutoCompleteText">
                 <input 
                 value={ text } 
-                onChange={this.onTextChanged} 
-                onSubmit={this.Input} 
+                onChange={this.onTextChanged}  
                 type="text"
                 placeholder="Enter search criteria here" className= "userInput"/>
                 {this.renderSuggestions()}

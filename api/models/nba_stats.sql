@@ -57,6 +57,9 @@ CREATE TABLE `userTeams` (
   KEY `GP_index` (`GP`)
 ),
 
+DROP TABLE IF EXISTS `teamA`
+
+
 CREATE TABLE `teamA` (
    `nbastats_id` int(11) NOT NULL AUTO_INCREMENT,
   `Player` varchar(25) DEFAULT NULL,
@@ -86,6 +89,8 @@ CREATE TABLE `teamA` (
   PRIMARY KEY (''),
   KEY `GP_index` (`GP`)
 ),
+
+DROP TABLE IF EXISTS `teamB`
 
 CREATE TABLE `teamB` (
    `nbastats_id` int(11) NOT NULL AUTO_INCREMENT,

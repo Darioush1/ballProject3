@@ -12,6 +12,7 @@ var indexStats = require('./routes/api/expressRoutes');
 var statsStats = require('./routes/api/statsRoutes')
 var apiRoutes = require('./routes/api/apiRoutesSQL')
 const teamA = require('./routes/api/teamA')
+const teamB = require('./routes/api/teamB')
 const bodyParser = require('body-parser');
 var app = express();
 
@@ -56,7 +57,7 @@ app.use(function(req, res, next){
 	);
 	next();
 });
-// db.sequelize.sync(syncOptions).then(function() {
+// db.sequelize(function() {
 // 	let PORT = 3001;
 // 	app.listen(PORT, () => {
 // 	  console.log(
@@ -69,7 +70,8 @@ app.use(function(req, res, next){
 app.use('/api/stats', indexStats);
 app.use('/api/data', statsStats);
 app.use('/api/player1', apiRoutes);
-app.use('/api/team1', teamA)
+app.use('/api/teamA', teamA);
+app.use('/api/teamB', teamB);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

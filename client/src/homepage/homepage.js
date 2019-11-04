@@ -1,7 +1,7 @@
 import React from 'react';
 import './homepage.css';
 import Stats from '../stats/stats';
-//import News from '../news/news';
+import News from '../news/news';
 import AutoCompleteText from "../components/AutoCompleteText/AutoCompleteText";
 import api from '../utils/API';
 import NAMES from "../components/Players/Players";
@@ -15,6 +15,9 @@ class HomePage extends React.Component {
 
     state = {
         allPlayers: [],
+        userInput: '',
+        player1:'LeBron James',
+        player2:'Stephen Curry'
     };
 
     
@@ -25,9 +28,9 @@ class HomePage extends React.Component {
 
     apiState = () => {
         api.getPlayers().then(stats => {
-            //console.log("get Players called stats", stats.data.Players);
+            
             const allStats = stats.data;
-            //console.log("This is all stats ", allStats)
+            // console.log("This is all stats ", allStats)
             const chosenPlayer = allStats.filter(
                 function (allStats) {
                     return allStats.Players === "LeBron James";
@@ -35,7 +38,7 @@ class HomePage extends React.Component {
             );
            // console.log("Chosen Player = ", chosenPlayer)
             this.setState({
-                stats: stats.data
+                allPlayers: stats.data
             });
         }).catch(err => console.log("error in getPLayers api.js", err));
 
@@ -58,16 +61,17 @@ class HomePage extends React.Component {
 
 
     //api post route for player info
-    addPlayer = (name) => {
-
-        let userInput = name;
-        let players = this.state.data;
-        console.log(this.state.data)
+    addPlayer1 = (name) => {
+        console.log("name goes here ", this.state.player1)
+        let userInput = this.state.player1;
+        console.log("user input is", userInput)
+        let players = this.state.allPlayers;
+        console.log(this.state.allPlayers)
         const choice = players.filter(players => players.name === userInput);
         const choice1 = choice[0];
         //console.log(choice1);
         api.savePlayer1({
-            name: choice1.name
+            name: choice1
         })
         .then(res => {
            console.log(choice1);
@@ -75,8 +79,28 @@ class HomePage extends React.Component {
        })
     };
 
+    addPlayer2 = () => {
+        console.log("name goes here ", this.state.player2)
+        let userInput = this.state.player2;
+        console.log("user input is", userInput)
+        let players = this.state.allPlayers;
+        console.log(this.state.name)
+        const choice = players.filter(players => players.name === userInput);
+        const choice1 = choice[0];
+        //console.log(choice1);
+        api.savePlayer2({
+            name: choice1
+        })
+        .then(res => {
+           console.log(choice1);
+            
+       })
+    };
+
+
     myCallBack = (userInput) => {
-        this.addPlayer(userInput) 
+        this.setState({ userInput: this.state.userInput}) 
+        console.log("Inside myCallBack ", this.state.userInput)
     }
 
   
@@ -139,15 +163,15 @@ class HomePage extends React.Component {
 
 
    
-    // submitTeams(e) {
-    //     e.preventDefault();
-    //     fetch("http://site.api.espn.com/apis/site/v2/sports/basketball/nba/news")
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             this.setState({ data: data, submitted: true });
-    //         });
-    //     // console.log(this.state.team1, this.state.team2);
-    // }
+    submitTeams(e) {
+        e.preventDefault();
+        fetch("http://site.api.espn.com/apis/site/v2/sports/basketball/nba/news")
+            .then(res => res.json())
+            .then(data => {
+                this.setState({ data: data, submitted: true });
+            });
+        // console.log(this.state.team1, this.state.team2);
+    }
 
     updatePlayer1(e) {
         this.setState({ player1: e.target.value });
@@ -166,6 +190,7 @@ class HomePage extends React.Component {
     }
 
     render() {
+        console.log(this.state)
         return (
             <div style={{ marginTop: '30px' }} className="container">
                 <div className="row">
@@ -174,11 +199,10 @@ class HomePage extends React.Component {
                         <div className="card">
                             <div className="card-body">
                                 <h5 className="card-title">ENTER PLAYER NAMES</h5>
-                                <form onSubmit={this.submitPlayers}>
+                                <form onSubmit={this.addPlayer}>
                                     <div className="form-group">
                                         <label htmlFor="playerName1">PLAYER NAME 1</label>
                                         <AutoCompleteText 
-                                        callBackFromParent = {this.myCallBack}
                                         items={NAMES}
                                          />
                                         {/* <input type="text" value={this.state.player1} onChange={this.updatePlayer1} className="form-control" id="playerName1" aria-describedby="playerName1" placeholder="Enter Player Name 1" /> */}
@@ -191,14 +215,16 @@ class HomePage extends React.Component {
                                     </div>
 
                                     <button 
-                                    type="submit" 
+                                    type="button" 
                                     className="btn btn-primary"
                                     >SUBMIT</button>
                                     <button
-                                    type="submit" 
+                                    type="button" 
                                     className="btn btn-primary"
-                                    >player1team2</button>
-                                    <button type="submit" className="btn btn-primary" >player2team2</button>
+                                    onClick = {this.addPlayer1}
+                                    >player1team1</button>
+                                    <button type="button" className="btn btn-primary" 
+                                    onClick = {this.addPlayer2}>player2team2</button>
                                 </form>
                             </div>
                         </div>
