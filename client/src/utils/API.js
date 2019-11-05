@@ -6,7 +6,10 @@ export default {
         return axios.get("http://localhost:3001/api/player1/", )
     },
  
+    
+
     savePlayer1: function (TeamA) {
+        
         return axios.post("http://localhost:3001/api/teamA/", TeamA)
     },
 

@@ -3,6 +3,7 @@ import './homepage.css';
 import Stats from '../stats/stats';
 import News from '../news/news';
 import AutoCompleteText from "../components/AutoCompleteText/AutoCompleteText";
+import AutoCompleteText2 from "../components/AutoCompleteText2/AutoCompleteText2";
 import api from '../utils/API';
 import NAMES from "../components/Players/Players";
 import Teams from "../components/Teams/Teams";
@@ -17,7 +18,7 @@ class HomePage extends React.Component {
         allPlayers: [],
         userInput: '',
         player1: '',
-        player2: 'Stephen Curry'
+        player2: ''
     };
 
 
@@ -65,13 +66,13 @@ class HomePage extends React.Component {
         console.log(choice)
         const choice1 = choice[0];
         console.log(choice1);
-        api.savePlayer1({
-            name: choice1
-        })
-            .then(res => {
-                console.log(choice1);
+        // api.savePlayer1({
+        //     name: choice1
+        // })
+        //     .then(res => {
+        //         console.log(choice1);
 
-            })
+        //     })
     };
 
     addPlayer2 = () => {
@@ -101,6 +102,11 @@ class HomePage extends React.Component {
     updatePlayer1Name = (userInput) => {
         this.setState({
             player1: userInput
+        });
+    }
+    updatePlayer2Name = (userInput) => {
+        this.setState({
+            player2: userInput
         });
     }
 
@@ -182,9 +188,9 @@ class HomePage extends React.Component {
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="playerName2">PLAYER NAME 2</label>
-                                        <AutoCompleteText 
+                                        <AutoCompleteText2 
                                         items={NAMES}
-                                        nameHere = {this.state.player1}
+                                        updatePlayer2 = {this.updatePlayer2Name.bind(this)}
                                         />
                                     </div> 
 
@@ -192,7 +198,7 @@ class HomePage extends React.Component {
                                         type="button"
                                         className="btn btn-primary"
                                         onClick={this.addPlayer1}
-                                    >player1team1</button>
+                                    >Add {this.state.player1} </button>
                                     <button type="button" className="btn btn-primary"
                                         onClick={this.addPlayer2}>player2team2</button>
                                 </form>
