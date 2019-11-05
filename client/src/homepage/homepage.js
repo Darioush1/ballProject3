@@ -3,6 +3,7 @@ import './homepage.css';
 import Stats from '../stats/stats';
 import News from '../news/news';
 import AutoCompleteText from "../components/AutoCompleteText/AutoCompleteText";
+import AutoCompleteText2 from "../components/AutoCompleteText2/AutoCompleteText2";
 import api from '../utils/API';
 import NAMES from "../components/Players/Players";
 import Teams from "../components/Teams/Teams";
@@ -16,11 +17,11 @@ class HomePage extends React.Component {
     state = {
         allPlayers: [],
         userInput: '',
-        player1:'LeBron James',
-        player2:'Stephen Curry'
+        player1: '',
+        player2: ''
     };
 
-    
+
 
     componentDidMount() {
         this.apiState()
@@ -28,15 +29,9 @@ class HomePage extends React.Component {
 
     apiState = () => {
         api.getPlayers().then(stats => {
-            
+
             const allStats = stats.data;
             // console.log("This is all stats ", allStats)
-            const chosenPlayer = allStats.filter(
-                function (allStats) {
-                    return allStats.Players === "LeBron James";
-                }
-            );
-           // console.log("Chosen Player = ", chosenPlayer)
             this.setState({
                 allPlayers: stats.data
             });
@@ -66,17 +61,18 @@ class HomePage extends React.Component {
         let userInput = this.state.player1;
         console.log("user input is", userInput)
         let players = this.state.allPlayers;
-        console.log(this.state.allPlayers)
-        const choice = players.filter(players => players.name === userInput);
+        console.log(players)
+        const choice = players.filter(players => players.Players === userInput);
+        console.log(choice)
         const choice1 = choice[0];
-        //console.log(choice1);
-        api.savePlayer1({
-            name: choice1
-        })
-        .then(res => {
-           console.log(choice1);
-            
-       })
+        console.log(choice1);
+        // api.savePlayer1({
+        //     name: choice1
+        // })
+        //     .then(res => {
+        //         console.log(choice1);
+
+        //     })
     };
 
     addPlayer2 = () => {
@@ -91,19 +87,29 @@ class HomePage extends React.Component {
         api.savePlayer2({
             name: choice1
         })
-        .then(res => {
-           console.log(choice1);
-            
-       })
+            .then(res => {
+                console.log(choice1);
+
+            })
     };
 
 
     myCallBack = (userInput) => {
-        this.setState({ userInput: this.state.userInput}) 
+        this.setState({ userInput: this.state.userInput })
         console.log("Inside myCallBack ", this.state.userInput)
     }
 
-  
+    updatePlayer1Name = (userInput) => {
+        this.setState({
+            player1: userInput
+        });
+    }
+    updatePlayer2Name = (userInput) => {
+        this.setState({
+            player2: userInput
+        });
+    }
+
 
     getStatsData() {
         // Ajax call goes here, fill the state with the data that comes in
@@ -158,36 +164,9 @@ class HomePage extends React.Component {
         )
     }
 
-    
 
 
-
-   
-    submitTeams(e) {
-        e.preventDefault();
-        fetch("http://site.api.espn.com/apis/site/v2/sports/basketball/nba/news")
-            .then(res => res.json())
-            .then(data => {
-                this.setState({ data: data, submitted: true });
-            });
-        // console.log(this.state.team1, this.state.team2);
-    }
-
-    updatePlayer1(e) {
-        this.setState({ player1: e.target.value });
-    }
-
-    updatePlayer2(e) {
-        this.setState({ player2: e.target.value });
-    }
-
-    updateTeam1(e) {
-        this.setState({ team1: e.target.value });
-    }
-
-    updateTeam2(e) {
-        this.setState({ team2: e.target.value });
-    }
+ 
 
     render() {
         console.log(this.state)
@@ -202,29 +181,26 @@ class HomePage extends React.Component {
                                 <form onSubmit={this.addPlayer}>
                                     <div className="form-group">
                                         <label htmlFor="playerName1">PLAYER NAME 1</label>
-                                        <AutoCompleteText 
-                                        items={NAMES}
-                                         />
-                                        {/* <input type="text" value={this.state.player1} onChange={this.updatePlayer1} className="form-control" id="playerName1" aria-describedby="playerName1" placeholder="Enter Player Name 1" /> */}
+                                        <AutoCompleteText
+                                            items={NAMES}
+                                            updatePlayer1 = {this.updatePlayer1Name.bind(this)}
+                                        />
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="playerName2">PLAYER NAME 2</label>
-                                        <AutoCompleteText items={NAMES} />
-                                        {/* <PlayerSearch /> */}
-                                        {/* <input type="text" value={this.state.player2} onChange={this.updatePlayer2} className="form-control" id="playerName2" aria-describedby="playerName2" placeholder="Enter Player Name 2" /> */}
-                                    </div>
+                                        <AutoCompleteText2 
+                                        items={NAMES}
+                                        updatePlayer2 = {this.updatePlayer2Name.bind(this)}
+                                        />
+                                    </div> 
 
-                                    <button 
-                                    type="button" 
-                                    className="btn btn-primary"
-                                    >SUBMIT</button>
                                     <button
-                                    type="button" 
-                                    className="btn btn-primary"
-                                    onClick = {this.addPlayer1}
-                                    >player1team1</button>
-                                    <button type="button" className="btn btn-primary" 
-                                    onClick = {this.addPlayer2}>player2team2</button>
+                                        type="button"
+                                        className="btn btn-primary"
+                                        onClick={this.addPlayer1}
+                                    >Add {this.state.player1} </button>
+                                    <button type="button" className="btn btn-primary"
+                                        onClick={this.addPlayer2}>player2team2</button>
                                 </form>
                             </div>
                         </div>
@@ -238,7 +214,7 @@ class HomePage extends React.Component {
                                     <div className="form-group">
                                         <label htmlFor="teamName1">TEAM NAME 1</label>
                                         <AutoCompleteText items={Teams} />
-                                        {/* <input type="text" defaultValue={this.state.team1} onChange={() => { }} onBlur={this.updateTeam1} className="form-control" id="teamName1" aria-describedby="teamName1" placeholder="Enter Team Name 1" /> */}
+                                        
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="teamName2">TEAM NAME 2</label>
@@ -276,9 +252,9 @@ class HomePage extends React.Component {
                                             />
                                         </div>
                                         <div className="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" style={{ height: '500px' }}>
-                                            {/* <News
-                                                data={this.state.data}
-                                            /> */}
+                                            <News
+                    
+                                            />
                                         </div>
                                         <div className="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
                                     </div>
@@ -288,6 +264,11 @@ class HomePage extends React.Component {
                     }
                 </div>
             </div>
+
+            // <div 
+            // newsCall={this.state.player1} 
+            // player1News={this.player1News.bind(this)}
+            // ></div>
         );
     }
 }

@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./AutoCompleteText.css";
+import "./text.css";
 
 export default class AutoCompleteText extends React.Component {
 
@@ -10,7 +10,7 @@ export default class AutoCompleteText extends React.Component {
         this.items = [];
         this.state = {
             suggestions: [],
-            text: props.player1,
+            text: props.player2,
             id: this.props.id,
         };
     }
@@ -48,8 +48,8 @@ export default class AutoCompleteText extends React.Component {
         );
     }
 
-    updatePlayer() {
-        this.props.updatePlayer1(this.state.text)
+    updatePlayer2() {
+        this.props.updatePlayer2(this.state.text)
         
         console.log(this.state.text)
     }
@@ -70,7 +70,7 @@ export default class AutoCompleteText extends React.Component {
                 />
                 {this.renderSuggestions()}
                 <button
-                    onClick= {this.updatePlayer.bind(this)}
+                    onClick= {this.updatePlayer2.bind(this)}
                     type="button"
                     className="btn btn-primary"
                 >SUBMIT</button>

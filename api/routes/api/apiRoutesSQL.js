@@ -13,7 +13,6 @@ router.get('/', function(req, res, next) {
     throw error;
    }
    
-   console.log("apiRoutes get from database ", JSON.stringify(results))
    res.send(JSON.stringify(results));
  });
 });
