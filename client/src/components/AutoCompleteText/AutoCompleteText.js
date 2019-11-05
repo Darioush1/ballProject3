@@ -1,15 +1,16 @@
 import React from "react";
+import PropTypes from "prop-types";
 import "./AutoCompleteText.css";
 
 export default class AutoCompleteText extends React.Component {
 
-   
+
     constructor(props) {
         super(props);
         this.items = [];
         this.state = {
             suggestions: [],
-            text: "",
+            text: props.player1,
             id: this.props.id,
         };
     }
@@ -22,11 +23,11 @@ export default class AutoCompleteText extends React.Component {
             const regex = new RegExp(`^${value}`, "i");
             suggestions = items.sort().filter(v => regex.test(v));
         }
-        
+
         this.setState(() => ({ suggestions, text: value }));
     }
 
-    suggestionSelected (value) {
+    suggestionSelected(value) {
         this.setState(() => ({
             text: value,
             suggestions: [],
@@ -40,59 +41,49 @@ export default class AutoCompleteText extends React.Component {
         }
         return (
             <ul>
-                {suggestions.map((item, index) => <li 
-                key = {index}
-                onClick={() => this.suggestionSelected(item)}>{item}</li>)}
+                {suggestions.map((item, index) => <li
+                    key={index}
+                    onClick={() => this.suggestionSelected(item)}>{item}</li>)}
             </ul>
         );
     }
 
-    addPlayer = event => {
-
-        let userInput = this.props;
-        let players = this.state.data;
-        const choice = players.filter(players => players.name === userInput);
-        const choice1 = choice[0];
-        //console.log(choice1);
-        // api.savePlayer1({
-        //     name: choice1.name
-        // })
-        //.then(res => {
-        //    console.log(choice1);
-            
-       // })
-    };
-
-
-    Input = event => {
-
-        const value = this.props.myCallback;
-        this.setState(() => ({userInput: value }))
-        event.preventDefault();
-        console.log("user input" + value)
-        this.props.callBackFromParent(
-            this.state.text
-        );
+    updatePlayer() {
+        this.props.updatePlayer1(this.state.text)
+        
+        console.log(this.state.text)
     }
 
-  
+
 
     render() {
-        const { text } = this.state;
+        let { text } = this.state;
         return (
             <div className="AutoCompleteText">
-                <input 
-                value={ text } 
-                onChange={this.onTextChanged}  
-                type="text"
-                placeholder="Enter search criteria here" className= "userInput"/>
+                <input
+                    value={text}
+                    onChange={
+                        this.onTextChanged
+                    }
+                    type="text"
+                    placeholder="Enter search criteria here" className="userInput"
+                />
                 {this.renderSuggestions()}
+                <button
+                    onClick= {this.updatePlayer.bind(this)}
+                    type="button"
+                    className="btn btn-primary"
+                >SUBMIT</button>
             </div>
-            
+
         )
 
     }
 
-   
+
+}
+
+AutoCompleteText.protoTypes = {
+
 }
 
