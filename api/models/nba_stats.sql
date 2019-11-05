@@ -1,126 +1,40 @@
-CREATE DATABASE  IF NOT EXISTS `nba_stats` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+CREATE DATABASE  IF NOT EXISTS `nba_stats` ;
 USE `nba_stats`;
--- MySQL dump 10.13  Distrib 8.0.17, for Win64 (x86_64)
---
--- Host: localhost    Database: nba_stats
--- ------------------------------------------------------
--- Server version	8.0.17
+-
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT;
-!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS;
-!40101 SET OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION;
-!50503 SET NAMES utf8 ;
-!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE;
-!40103 SET TIME_ZONE='+00:00' ;
-!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
-!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
-!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO';
-!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0;
+USE nba_stats;
 
---
--- Table structure for table `nbastats`
---
 
-DROP TABLE IF EXISTS `nbastats`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 
-DROP TABLE IF EXISTS `userTeams`
 
-CREATE TABLE `userTeams` (
-   `nbastats_id` int(11) NOT NULL AUTO_INCREMENT,
-  `Player` varchar(25) DEFAULT NULL,
-  `Year` varchar(12) DEFAULT NULL,
-  `Season` varchar(5) DEFAULT NULL,
-  `Team` varchar(45) DEFAULT NULL,
-  `GP` int(11) DEFAULT NULL,
-  `Min` decimal(12,2) DEFAULT NULL,
-  `PPG` decimal(12,2) DEFAULT NULL,
-  `Oreb` decimal(12,2) DEFAULT NULL,
-  `Dreb` decimal(12,2) DEFAULT NULL,
-  `Reb` decimal(12,2) DEFAULT NULL,
-  `Ast` decimal(12,2) DEFAULT NULL,
-  `Stl` decimal(12,2) DEFAULT NULL,
-  `Blk` decimal(12,2) DEFAULT NULL,
+create TABLE teamB (
+id int(11) NOT NULL AUTO_INCREMENT,
+  Player varchar(25) DEFAULT NULL,
+  Year varchar(12) DEFAULT NULL,
+  Season varchar(5) DEFAULT NULL,
+  Team varchar(45) DEFAULT NULL,
+  GP int(11) DEFAULT NULL,
+  Min decimal(12,2) DEFAULT NULL,
+  PPG decimal(12,2) DEFAULT NULL,
+  Oreb decimal(12,2) DEFAULT NULL,
+  Dreb decimal(12,2) DEFAULT NULL,
+  Reb decimal(12,2) DEFAULT NULL,
+  Ast decimal(12,2) DEFAULT NULL,
+Stl decimal(12,2) DEFAULT NULL,
+  Blk decimal(12,2) DEFAULT NULL,
   `TO` decimal(12,2) DEFAULT NULL,
-  `PF` decimal(12,2) DEFAULT NULL,
-  `FGM` decimal(12,2) DEFAULT NULL,
-  `FGA` decimal(12,2) DEFAULT NULL,
+  PF decimal(12,2) DEFAULT NULL,
+  FGM decimal(12,2) DEFAULT NULL,
+  FGA decimal(12,2) DEFAULT NULL,
   `FG%` decimal(12,3) DEFAULT NULL,
   `3PTM` decimal(12,2) DEFAULT NULL,
   `3PTA` decimal(12,2) DEFAULT NULL,
   `3PT%` decimal(12,3) DEFAULT NULL,
-  `FTM` decimal(12,2) DEFAULT NULL,
-  `FTA` decimal(12,2) DEFAULT NULL,
+  FTM decimal(12,2) DEFAULT NULL,
+  FTA decimal(12,2) DEFAULT NULL,
   `FT%` decimal(12,3) DEFAULT NULL,
-  PRIMARY KEY (''),
-  KEY `GP_index` (`GP`)
-),
-
-DROP TABLE IF EXISTS `teamA`
-
-
-CREATE TABLE `teamA` (
-   `nbastats_id` int(11) NOT NULL AUTO_INCREMENT,
-  `Player` varchar(25) DEFAULT NULL,
-  `Year` varchar(12) DEFAULT NULL,
-  `Season` varchar(5) DEFAULT NULL,
-  `Team` varchar(45) DEFAULT NULL,
-  `GP` int(11) DEFAULT NULL,
-  `Min` decimal(12,2) DEFAULT NULL,
-  `PPG` decimal(12,2) DEFAULT NULL,
-  `Oreb` decimal(12,2) DEFAULT NULL,
-  `Dreb` decimal(12,2) DEFAULT NULL,
-  `Reb` decimal(12,2) DEFAULT NULL,
-  `Ast` decimal(12,2) DEFAULT NULL,
-  `Stl` decimal(12,2) DEFAULT NULL,
-  `Blk` decimal(12,2) DEFAULT NULL,
-  `TO` decimal(12,2) DEFAULT NULL,
-  `PF` decimal(12,2) DEFAULT NULL,
-  `FGM` decimal(12,2) DEFAULT NULL,
-  `FGA` decimal(12,2) DEFAULT NULL,
-  `FG%` decimal(12,3) DEFAULT NULL,
-  `3PTM` decimal(12,2) DEFAULT NULL,
-  `3PTA` decimal(12,2) DEFAULT NULL,
-  `3PT%` decimal(12,3) DEFAULT NULL,
-  `FTM` decimal(12,2) DEFAULT NULL,
-  `FTA` decimal(12,2) DEFAULT NULL,
-  `FT%` decimal(12,3) DEFAULT NULL,
-  PRIMARY KEY (''),
-  KEY `GP_index` (`GP`)
-),
-
-DROP TABLE IF EXISTS `teamB`
-
-CREATE TABLE `teamB` (
-   `nbastats_id` int(11) NOT NULL AUTO_INCREMENT,
-  `Player` varchar(25) DEFAULT NULL,
-  `Year` varchar(12) DEFAULT NULL,
-  `Season` varchar(5) DEFAULT NULL,
-  `Team` varchar(45) DEFAULT NULL,
-  `GP` int(11) DEFAULT NULL,
-  `Min` decimal(12,2) DEFAULT NULL,
-  `PPG` decimal(12,2) DEFAULT NULL,
-  `Oreb` decimal(12,2) DEFAULT NULL,
-  `Dreb` decimal(12,2) DEFAULT NULL,
-  `Reb` decimal(12,2) DEFAULT NULL,
-  `Ast` decimal(12,2) DEFAULT NULL,
-  `Stl` decimal(12,2) DEFAULT NULL,
-  `Blk` decimal(12,2) DEFAULT NULL,
-  `TO` decimal(12,2) DEFAULT NULL,
-  `PF` decimal(12,2) DEFAULT NULL,
-  `FGM` decimal(12,2) DEFAULT NULL,
-  `FGA` decimal(12,2) DEFAULT NULL,
-  `FG%` decimal(12,3) DEFAULT NULL,
-  `3PTM` decimal(12,2) DEFAULT NULL,
-  `3PTA` decimal(12,2) DEFAULT NULL,
-  `3PT%` decimal(12,3) DEFAULT NULL,
-  `FTM` decimal(12,2) DEFAULT NULL,
-  `FTA` decimal(12,2) DEFAULT NULL,
-  `FT%` decimal(12,3) DEFAULT NULL,
-  PRIMARY KEY (''),
-  KEY `GP_index` (`GP`)
-),
+  PRIMARY KEY (id)
+)
 
 
 CREATE TABLE `nbastats` (
