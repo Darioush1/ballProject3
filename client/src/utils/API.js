@@ -6,7 +6,10 @@ export default {
         return axios.get("http://localhost:3001/api/player1/", )
     },
  
-    
+    getPlayers: function (req,res) {
+        //console.log("getPlayers called")
+        return axios.get("http://localhost:3001/api/teamA/", )
+    },
 
     savePlayer1: function (player1Stats) {
         
@@ -17,15 +20,9 @@ export default {
         return axios.post("http://localhost:3001/api/teamB/", player2Stats)
     },
 
-    saveTeam1: function(id) {
-        return axios.post("/api/team1")
-    },
-
-    saveTeam2: function() {
-        return axios.post("/api/team2")
+    clearTeam1: function (id) {
+        return axios.delete("http://localhost:3001/api/teamA/", id)
     }
-
-
 };
 
 

@@ -26,7 +26,9 @@ class HomePage extends React.Component {
 
 
     componentDidMount() {
-        this.apiState()
+        this.apiState();
+        this.teamA();
+        this.teamB();
     }
 
     apiState = () => {
@@ -38,6 +40,23 @@ class HomePage extends React.Component {
 
     };
 
+    teamA = () => {
+        api.getPlayers().then(stats => {
+            this.setState({
+                teamA:stats.data
+                })
+            }).catch(err => console.log("error in getPLayers api.js", err));
+    };
+
+
+    teamB = () => {
+        api.getPlayers().then(stats => {
+            this.setState({
+                teamB:stats.data
+                })
+            }).catch(err => console.log("error in getPLayers api.js", err));
+    };
+
     playerNamesOnly = () => {
         const players = this.state.data;
         const PlayerName = players.map(players => players.name);
@@ -45,6 +64,15 @@ class HomePage extends React.Component {
         return PlayerName;
     }
 
+    clearTeams = (team) => {
+        if (this.state.teamA.id === undefined && this.state.teamB.id === undefined) {
+            console.log("Teams Empty")
+        } else { 
+            const teamA = this.state.player2;
+            const emptyA = teamA.map(teamA =>
+                teamA.id)
+        }
+    }
 
 
 
