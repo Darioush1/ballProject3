@@ -18,7 +18,9 @@ class HomePage extends React.Component {
         allPlayers: [],
         userInput: '',
         player1: '',
-        player2: ''
+        player2: '',
+        teamA: [],
+        teamB:[]
     };
 
 
@@ -29,13 +31,16 @@ class HomePage extends React.Component {
 
     apiState = () => {
         api.getPlayers().then(stats => {
-
-            const allStats = stats.data;
-            // console.log("This is all stats ", allStats)
             this.setState({
                 allPlayers: stats.data
             });
         }).catch(err => console.log("error in getPLayers api.js", err));
+
+        // api.getPlayers().then(stats => {
+        //     this.setState({
+        //         allPlayers: stats.data
+        //     });
+        // }).catch(err => console.log("error in getPLayers api.js", err));
 
     };
 
@@ -63,16 +68,16 @@ class HomePage extends React.Component {
         let players = this.state.allPlayers;
         console.log(players)
         const choice = players.filter(players => players.Players === userInput);
-        console.log(choice)
+        console.log(choice[0])
         const choice1 = choice[0];
-        console.log(choice1);
-        // api.savePlayer1({
-        //     name: choice1
-        // })
-        //     .then(res => {
-        //         console.log(choice1);
+        console.log(choice1.Players);
+        api.savePlayer1({
+            name: choice1
+        })
+            .then(res => {
+                console.log(choice1);
 
-        //     })
+            })
     };
 
     addPlayer2 = () => {

@@ -8,9 +8,9 @@ export default {
  
     
 
-    savePlayer1: function (TeamA) {
+    savePlayer1: function (player1Stats) {
         
-        return axios.post("http://localhost:3001/api/teamA/", TeamA)
+        return axios.post("http://localhost:3001/api/teamA/", player1Stats)
     },
 
     savePlayer2: function(TeamB) {
