@@ -1,25 +1,20 @@
 import axios from "axios";
 
 export default {
-    getPlayers: function () {
-        return axios.get("https://nba-players.herokuapp.com/players-stats")
+    getPlayers: function (req,res) {
+        //console.log("getPlayers called")
+        return axios.get("http://localhost:3001/api/player1/", )
+    },
+ 
+    
+
+    savePlayer1: function (TeamA) {
+        
+        return axios.post("http://localhost:3001/api/teamA/", TeamA)
     },
 
-    getPlayer1: function (id) {
-        console.log("player 1 id = ", id)
-        return axios.get("/api/players" + id);
-    },
-
-    deletePlayer: function (id) {
-        return axios.delete("/api/players" +  id)
-    },
-
-    savePlayer1: function (id) {
-        return axios.post("/api/player1")
-    },
-
-    savePlayer2: function(id) {
-        return axios.post("/api/player2")
+    savePlayer2: function(TeamB) {
+        return axios.post("http://localhost:3001/api/teamB/", TeamB)
     },
 
     saveTeam1: function(id) {

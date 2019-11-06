@@ -1,11 +1,8 @@
 module.exports = function(sequelize, DataTypes) {
-	var Nbastat = sequelize.define('Nbastat', {
-		id: {
-			type: DataTypes.INTEGER(11),
-			allowNull: false,
-			primaryKey: true,
-			field: 'id'
-		},
+  
+
+	var TeamA = sequelize.define('TeamA', {
+		
 		players: {
 			type: DataTypes.STRING(25),
 			allowNull: true,
@@ -96,17 +93,17 @@ module.exports = function(sequelize, DataTypes) {
 			allowNull: true,
 			field: 'FG%'
 		},
-		'3Ptm': {
+		threePtm: {
 			type: DataTypes.DECIMAL,
 			allowNull: true,
 			field: '3PTM'
 		},
-		'3Pta': {
+		threePta: {
 			type: DataTypes.DECIMAL,
 			allowNull: true,
 			field: '3PTA'
 		},
-		'3Pt': {
+		threePt: {
 			type: DataTypes.DECIMAL,
 			allowNull: true,
 			field: '3PT%'
@@ -128,7 +125,8 @@ module.exports = function(sequelize, DataTypes) {
 		}
 	}, {
 		timestamps: false
-	});
+});
 
-	return Nbastat;
+
+return TeamA;
 };

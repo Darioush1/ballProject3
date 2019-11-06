@@ -1,11 +1,8 @@
 module.exports = function(sequelize, DataTypes) {
-	var Nbastat = sequelize.define('Nbastat', {
-		id: {
-			type: DataTypes.INTEGER(11),
-			allowNull: false,
-			primaryKey: true,
-			field: 'id'
-		},
+
+
+	var TeamB = sequelize.define('TeamB', {
+		
 		players: {
 			type: DataTypes.STRING(25),
 			allowNull: true,
@@ -130,5 +127,5 @@ module.exports = function(sequelize, DataTypes) {
 		timestamps: false
 	});
 
-	return Nbastat;
+	return TeamB;
 };
