@@ -41,7 +41,6 @@ export default withAuth(
         </ul>
       ) : (
         <ul className="auth-nav">
-          
             <a
               href="javascript:void(0)"
               onClick={() => this.props.auth.login()}

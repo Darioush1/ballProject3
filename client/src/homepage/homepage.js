@@ -8,33 +8,26 @@ import api from '../utils/API';
 import NAMES from "../components/Players/Players";
 import Teams from "../components/Teams/Teams";
 
-
-
-
-
 class HomePage extends React.Component {
 
-    state = {
-        allPlayers: [],
-        userInput: '',
-        player1: '',
-        player2: ''
-    };
-
-
-
-    componentDidMount() {
-        this.apiState()
+    constructor(props) {
+        super(props);
+        this.state = {
+            allPlayers: [],
+            userInput: '',
+            player1: '',
+            player2: '',
+            loadAutocomplete: false
+        };
     }
 
-    apiState = () => {
-        api.getPlayers().then(stats => {
+    componentDidMount() {
+        this.getPlayers();
+    }
 
-            const allStats = stats.data;
-            // console.log("This is all stats ", allStats)
-            this.setState({
-                allPlayers: stats.data
-            });
+    getPlayers = () => {
+        api.getPlayers().then(players => {
+            this.setState({ allPlayers: players.data, loadAutocomplete: true });
         }).catch(err => console.log("error in getPLayers api.js", err));
 
     };
@@ -93,7 +86,6 @@ class HomePage extends React.Component {
             })
     };
 
-
     myCallBack = (userInput) => {
         this.setState({ userInput: this.state.userInput })
         console.log("Inside myCallBack ", this.state.userInput)
@@ -109,7 +101,6 @@ class HomePage extends React.Component {
             player2: userInput
         });
     }
-
 
     getStatsData() {
         // Ajax call goes here, fill the state with the data that comes in
@@ -164,12 +155,14 @@ class HomePage extends React.Component {
         )
     }
 
-
-
- 
+    submitPlayers() {
+        api.submitPlayers(this.state.player1, this.state.player2);
+        // .then(players => {
+        //     this.setState({ allPlayers: players.data, loadAutocomplete: true });
+        // }).catch(err => console.log("error in getPLayers api.js", err));
+    }
 
     render() {
-        console.log(this.state)
         return (
             <div style={{ marginTop: '30px' }} className="container">
                 <div className="row">
@@ -182,25 +175,29 @@ class HomePage extends React.Component {
                                     <div className="form-group">
                                         <label htmlFor="playerName1">PLAYER NAME 1</label>
                                         <AutoCompleteText
-                                            items={NAMES}
+                                            items={this.state.allPlayers}
                                             updatePlayer1 = {this.updatePlayer1Name.bind(this)}
                                         />
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="playerName2">PLAYER NAME 2</label>
                                         <AutoCompleteText2 
-                                        items={NAMES}
+                                        items={this.state.allPlayers}
                                         updatePlayer2 = {this.updatePlayer2Name.bind(this)}
                                         />
                                     </div> 
-
                                     <button
+                                        onClick={this.submitPlayers.bind(this)}
+                                        type="button"
+                                        className="btn btn-primary"
+                                    >SUBMIT</button>
+                                    {/* <button
                                         type="button"
                                         className="btn btn-primary"
                                         onClick={this.addPlayer1}
-                                    >Add {this.state.player1} </button>
-                                    <button type="button" className="btn btn-primary"
-                                        onClick={this.addPlayer2}>player2team2</button>
+                                    >Add {this.state.player1} </button> */}
+                                    {/* <button type="button" className="btn btn-primary"
+                                        onClick={this.addPlayer2}>player2team2</button> */}
                                 </form>
                             </div>
                         </div>

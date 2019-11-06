@@ -16,6 +16,14 @@ module.exports = function(app) {
     addStats.save().then(stat => res.json(stat))
   });
 
+  app.post("/", (req,res) => {
+    console.log(req)
+    // const addStats = new Stat({
+    //   name: this.state.data.name,
+    // })
+    // addStats.save().then(stat => res.json(stat))
+  });
+
   app.get("/allStats", (req,res) => {
     Stat.find()
       .then(player => res.json(player) )
