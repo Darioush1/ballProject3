@@ -21,6 +21,7 @@ class HomePage extends React.Component {
         player2: '',
         teamA: [],
         teamB:[]
+        //There is not cap to the number of players you can add to a team yet, I am also working on clearing TEAMA and TEAMB when the component mounts. 
     };
 
 
@@ -40,6 +41,7 @@ class HomePage extends React.Component {
 
     };
 
+    //this function will get teamA from localhost/api/teamA
     teamA = () => {
         api.getPlayers().then(stats => {
             this.setState({
@@ -48,7 +50,7 @@ class HomePage extends React.Component {
             }).catch(err => console.log("error in getPLayers api.js", err));
     };
 
-
+//this function will get teamA from localhost/api/teamB
     teamB = () => {
         api.getPlayers().then(stats => {
             this.setState({
@@ -64,6 +66,7 @@ class HomePage extends React.Component {
         return PlayerName;
     }
 
+    //ideally this will clear the team's based on their ideas
     clearTeams = (team) => {
         if (this.state.teamA.id === undefined && this.state.teamB.id === undefined) {
             console.log("Teams Empty")
@@ -71,6 +74,7 @@ class HomePage extends React.Component {
             const teamA = this.state.player2;
             const emptyA = teamA.map(teamA =>
                 teamA.id)
+            this.clearTeam1
         }
     }
 
