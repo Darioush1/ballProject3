@@ -15,7 +15,8 @@ const teamA = require('./routes/api/teamA')
 const teamB = require('./routes/api/teamB')
 const bodyParser = require('body-parser');
 var app = express();
-let PORT = 5000;
+let PORT = process.env.PORT || 5000;
+const connection = './mysql/connection';
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -41,24 +42,25 @@ app.use('/api/users', usersRouter);
 
 
 //Database connection
-app.use(function(req, res, next){
-	res.locals.connection = mysql.createConnection({
-		host     : 'localhost',
-		user     : 'root',
-		password : 'bone1472',
-		database : 'nba_stats'
-	});
-	res.locals.connection.connect(
-		function(err) {
-			if (err) throw err;
-			console.log("connection successful!");
-			//makeTable();
-		  }
+// app.use(function(req, res, next){
+// 	res.locals.connection = mysql.createConnection({
+// 		host     : 'localhost',
+// 		user     : 'root',
+// 		password : 'bone1472',
+// 		database : 'nba_stats'
+// 	});
+// 	res.locals.connection.connect(
+// 		function(err) {
+// 			if (err) throw err;
+// 			console.log("connection successful!");
+// 			//makeTable();
+// 		  }
 		  
-	);
-	next();
-});
+// 	);
+// 	next();
+// });
 
+app.use(connection);
 app.use('/api/stats', indexStats);
 app.use('/api/data', statsStats);
 app.use('/api/player1', apiRoutes);
@@ -80,7 +82,7 @@ app.use(function(err, req, res, next) {
   res.render('error', err);
 });
 
-app.listen(process.env.PORT || PORT, function() {
+app.listen(PORT, function() {
 	console.log("Server started on port", PORT)
 })
 
