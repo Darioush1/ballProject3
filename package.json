@@ -18,7 +18,7 @@
     "dev": "concurrently --kill-others \"npm:start:api\" \"npm:start:client\"",
     "start:api": "nodemon api/server.js",
     "start:client": "npm start --prefix client",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix api && npm install --prefix client && npm run build --prefix client"
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
  "devDependencies": {
     "concurrently": "^4.1.0",
