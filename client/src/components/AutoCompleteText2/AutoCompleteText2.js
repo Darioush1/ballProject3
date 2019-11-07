@@ -7,10 +7,10 @@ export default class AutoCompleteText extends React.Component {
 
     constructor(props) {
         super(props);
+        this.items = [];
         this.state = {
-            items: [],
             suggestions: [],
-            text: '',
+            text: props.player2,
             id: this.props.id,
         };
     }
@@ -31,8 +31,7 @@ export default class AutoCompleteText extends React.Component {
         this.setState(() => ({
             text: value,
             suggestions: [],
-        }));
-        this.props.updatePlayer2(value);
+        }))
     }
 
     renderSuggestions() {
@@ -49,17 +48,32 @@ export default class AutoCompleteText extends React.Component {
         );
     }
 
+    updatePlayer2() {
+        this.props.updatePlayer2(this.state.text)
+        
+        console.log(this.state.text)
+    }
+
+
+
     render() {
         let { text } = this.state;
         return (
             <div className="AutoCompleteText">
                 <input
                     value={text}
-                    onChange={this.onTextChanged}
+                    onChange={
+                        this.onTextChanged
+                    }
                     type="text"
                     placeholder="Enter search criteria here" className="userInput"
                 />
                 {this.renderSuggestions()}
+                <button
+                    onClick= {this.updatePlayer2.bind(this)}
+                    type="button"
+                    className="btn btn-primary"
+                >SUBMIT</button>
             </div>
 
         )
