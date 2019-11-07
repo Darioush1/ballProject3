@@ -1,7 +1,7 @@
 const mysql = require("mysql");
 const express = require('express');
 const app = express();
-const connection;
+let connection;
 
 if(process.env.NODE_ENV === 'production') {
     connection = mysql.createConnection(process.env.JAWSDB_URL);
