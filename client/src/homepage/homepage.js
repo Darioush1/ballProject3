@@ -7,6 +7,17 @@ import AutoCompleteText2 from "../components/AutoCompleteText2/AutoCompleteText2
 import api from '../utils/API';
 import NAMES from "../components/Players/Players";
 import Teams from "../components/Teams/Teams";
+import Container from 'react-bootstrap/Container';
+
+import {
+  Route,
+  NavLink,
+} from "react-router-dom";
+
+
+
+import ScatterChart from "./scatter & bubble charts/Scatter Chart";
+
 
 
 
@@ -36,6 +47,7 @@ class HomePage extends React.Component {
         api.getPlayers().then(stats => {
             this.setState({
                 allPlayers: stats.data
+                
             });
         }).catch(err => console.log("error in getPLayers api.js", err));
 
@@ -44,6 +56,7 @@ class HomePage extends React.Component {
     //this function will get teamA from localhost/api/teamA
     teamA = () => {
         api.getPlayers().then(stats => {
+        
             this.setState({
                 teamA:stats.data
                 })
@@ -72,9 +85,9 @@ class HomePage extends React.Component {
             console.log("Teams Empty")
         } else { 
             const teamA = this.state.player2;
-            const emptyA = teamA.map(teamA =>
-                teamA.id)
-            this.clearTeam1
+            // const emptyA = teamA.map(teamA =>
+            //     teamA.id)
+            // this.clearTeam1
         }
     }
 
@@ -233,7 +246,32 @@ class HomePage extends React.Component {
                         </div>
                     }
                 </div>
+                <div>
+			  
+			  <>		  
+				
+							<NavLink to="/scatter-chart">Scatter Chart</NavLink>
+							
+							
+						
+						
+							<Container>
+								<div className="content">
+									
+									
+									<Route path="/scatter-chart" component={ScatterChart}/>
+								
+									
+						
+									
+								</div>
+							</Container>
+										
+							
+			  </>	
+			</div>
             </div>
+            
 
             // <div 
             // newsCall={this.state.player1} 
@@ -242,5 +280,7 @@ class HomePage extends React.Component {
         );
     }
 }
+
+
 
 export default HomePage;

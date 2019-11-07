@@ -8,6 +8,7 @@ import RegistrationForm from './components/auth/RegistrationForm';
 import config from './app.config';
 import LoginPage from './components/auth/LoginPage';
 import ProfilePage from './components/auth/ProfilePage';
+import Template from './views/Template';
 
 
 
@@ -35,7 +36,6 @@ export default class App extends Component {
 //         console.log("hello")
 //     })
 // };
-
 
 
 
@@ -68,6 +68,7 @@ render() {
       </div>
       {}
       <HomePage />
+      
     </div>
   );
 }
