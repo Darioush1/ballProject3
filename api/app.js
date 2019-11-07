@@ -15,7 +15,7 @@ const teamA = require('./routes/api/teamA')
 const teamB = require('./routes/api/teamB')
 const bodyParser = require('body-parser');
 var app = express();
-let PORT = process.env.PORT || 5000;
+let PORT = process.env.PORT || 3001;
 const connection = './mysql/connection';
 
 app.use(express.urlencoded({ extended: false }));
