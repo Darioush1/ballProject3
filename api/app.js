@@ -59,8 +59,15 @@ app.use('/api/users', usersRouter);
 // 	);
 // 	next();
 // });
+if(process.env.NODE_ENV === 'production') {
+	app.use(express.static('client/build'));
+	app.get('*', (req, res) => {
+		res.sendFile('*', (req, res)=>{
+			res.sendFile(path.resolve(__dirname, '../', 'client', 'build','index.html'))
+		})
+	})
+}
 
-app.use(connection);
 app.use('/api/stats', indexStats);
 app.use('/api/data', statsStats);
 app.use('/api/player1', apiRoutes);
