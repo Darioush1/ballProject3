@@ -57,15 +57,6 @@ app.use(function(req, res, next){
 	);
 	next();
 });
-// db.sequelize(function() {
-// 	let PORT = 3001;
-// 	app.listen(PORT, () => {
-// 	  console.log(
-// 		"App lisenting on PORT",
-// 		PORT
-// 	  );
-// 	});
-//   });
 
 app.use('/api/stats', indexStats);
 app.use('/api/data', statsStats);
