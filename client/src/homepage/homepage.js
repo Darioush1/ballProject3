@@ -68,14 +68,7 @@ class HomePage extends React.Component {
 
     //ideally this will clear the team's based on their ideas
     clearTeams = (team) => {
-        if (this.state.teamA.id === undefined && this.state.teamB.id === undefined) {
-            console.log("Teams Empty")
-        } else { 
-            const teamA = this.state.player2;
-            const emptyA = teamA.map(teamA =>
-                teamA.id)
-            this.clearTeam1
-        }
+
     }
 
 
