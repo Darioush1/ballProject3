@@ -1,12 +1,13 @@
 import axios from "axios";
 
 export default {
+    //this gets all the player data
     getPlayers: function (req,res) {
         //console.log("getPlayers called")
         return axios.get("http://localhost:3001/api/player1/", )
     },
- 
-    getPlayers: function (req,res) {
+ //this shows team A
+    getPlayerA: function (req,res) {
         //console.log("getPlayers called")
         return axios.get("http://localhost:3001/api/teamA/", )
     },

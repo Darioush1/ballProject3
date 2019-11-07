@@ -43,7 +43,7 @@ class HomePage extends React.Component {
 
     //this function will get teamA from localhost/api/teamA
     teamA = () => {
-        api.getPlayers().then(stats => {
+        api.getPlayerA().then(stats => {
             this.setState({
                 teamA:stats.data
                 })
@@ -74,7 +74,7 @@ class HomePage extends React.Component {
             const teamA = this.state.player2;
             const emptyA = teamA.map(teamA =>
                 teamA.id)
-            this.clearTeam1
+            // this.clearTeam1
         }
     }
 
