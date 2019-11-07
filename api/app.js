@@ -44,7 +44,7 @@ app.use(function(req, res, next){
 	res.locals.connection = mysql.createConnection({
 		host     : 'localhost',
 		user     : 'root',
-		password : 'RIPsonics9596',
+		password : 'TacoB3ll1?',
 		database : 'nba_stats'
 	});
 	res.locals.connection.connect(
