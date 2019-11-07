@@ -3,12 +3,14 @@ import PropTypes from "prop-types";
 import "./AutoCompleteText.css";
 
 export default class AutoCompleteText extends React.Component {
+
+
     constructor(props) {
         super(props);
         this.items = [];
         this.state = {
             suggestions: [],
-            text: '',
+            text: props.player1,
             id: this.props.id,
         };
     }
@@ -26,8 +28,10 @@ export default class AutoCompleteText extends React.Component {
     }
 
     suggestionSelected(value) {
-        this.setState({ text: value, suggestions: [] });
-        this.props.updatePlayer1(value);
+        this.setState(() => ({
+            text: value,
+            suggestions: [],
+        }))
     }
 
     renderSuggestions() {
@@ -37,15 +41,20 @@ export default class AutoCompleteText extends React.Component {
         }
         return (
             <ul>
-                {suggestions.map((item, index) =>
-                    <li
-                        key={index}
-                        onClick={() => this.suggestionSelected(item)}>{item}
-                    </li>
-                )}
+                {suggestions.map((item, index) => <li
+                    key={index}
+                    onClick={() => this.suggestionSelected(item)}>{item}</li>)}
             </ul>
         );
     }
+
+    updatePlayer() {
+        this.props.updatePlayer1(this.state.text)
+        
+        console.log(this.state.text)
+    }
+
+
 
     render() {
         let { text } = this.state;
@@ -53,16 +62,25 @@ export default class AutoCompleteText extends React.Component {
             <div className="AutoCompleteText">
                 <input
                     value={text}
-                    onChange={this.onTextChanged}
+                    onChange={
+                        this.onTextChanged
+                    }
                     type="text"
-                    placeholder="Enter Player Name" className="userInput"
+                    placeholder="Enter search criteria here" className="userInput"
                 />
                 {this.renderSuggestions()}
+                <button
+                    onClick= {this.updatePlayer.bind(this)}
+                    type="button"
+                    className="btn btn-primary"
+                >SUBMIT</button>
             </div>
 
         )
 
     }
+
+
 }
 
 AutoCompleteText.protoTypes = {
