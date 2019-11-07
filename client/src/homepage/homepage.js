@@ -43,7 +43,7 @@ class HomePage extends React.Component {
 
     //this function will get teamA from localhost/api/teamA
     teamA = () => {
-        api.getPlayers().then(stats => {
+        api.getPlayerA().then(stats => {
             this.setState({
                 teamA:stats.data
                 })
@@ -161,9 +161,9 @@ class HomePage extends React.Component {
                                         type="button"
                                         className="btn btn-primary"
                                         onClick={this.addPlayer1}
-                                    >Add {this.state.player1} </button>
+                                    > SET TEAM A </button>
                                     <button type="button" className="btn btn-primary"
-                                        onClick={this.addPlayer2}>player2team2</button>
+                                        onClick={this.addPlayer2}>SET TEAM B</button>
                                 </form>
                             </div>
                         </div>
