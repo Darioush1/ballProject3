@@ -1,4 +1,4 @@
-//var createError = require('http-errors');
+var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
@@ -15,6 +15,7 @@ const teamA = require('./routes/api/teamA')
 const teamB = require('./routes/api/teamB')
 const bodyParser = require('body-parser');
 var app = express();
+let PORT = 5000;
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -64,9 +65,9 @@ app.use('/api/player1', apiRoutes);
 app.use('/api/teamA', teamA);
 app.use('/api/teamB', teamB);
 // catch 404 and forward to error handler
-/*app.use(function(req, res, next) {
+app.use(function(req, res, next) {
   next(createError(404));
-});*/
+});
 
 // error handler
 app.use(function(err, req, res, next) {
@@ -78,5 +79,9 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error', err);
 });
+
+app.listen(process.env.PORT || PORT, function() {
+	console.log("Server started on port", PORT)
+})
 
 module.exports = app;
