@@ -14,9 +14,9 @@
   },
   "homepage": "https://github.com/Darioush1/ballProject3#readme",
   "scripts" : {
-    "start": "node api/server.js",
+    "start": "node api/app.js",
     "dev": "concurrently --kill-others \"npm:start:api\" \"npm:start:client\"",
-    "start:api": "nodemon api/server.js",
+    "start:api": "nodemon api/app.js",
     "start:client": "npm start --prefix client",
     "heroku-postbuild": "cd client && npm install && npm install axios && npm run build"
   },
