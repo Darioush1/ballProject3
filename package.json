@@ -1,0 +1,29 @@
+{
+  "name": "ballproject3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Darioush1/ballProject3.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Darioush1/ballProject3/issues"
+  },
+  "homepage": "https://github.com/Darioush1/ballProject3#readme",
+  "scripts" : {
+    "start": "node api/server.js",
+    "dev": "concurrently --kill-others \"npm:start:api\" \"npm:start:client\"",
+    "start:api": "nodemon api/server.js",
+    "start:client": "npm start --prefix client",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix api && npm install --prefix client && npm run build --prefix client"
+  },
+ "devDependencies": {
+    "concurrently": "^4.1.0",
+    "nodemon": "^1.18.10"
+  }
+}
+
+
