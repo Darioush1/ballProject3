@@ -2,10 +2,10 @@ const mysql = require("mysql");
 const express = require('express');
 const app = express();
 const connection = mysql.createConnection({
-    host     : 'localhost',
+    host     : process.env.JAWSDB_URL || 'localhost',
     port    :3306,
     user     : 'root',
-    password : 'RIPsonics9596',
+    password : 'bone1472',
     database : 'nba_stats'
 });
 
