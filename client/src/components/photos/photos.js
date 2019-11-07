@@ -42,11 +42,10 @@ export default class Photo extends React.Component {
                         isloaded: true,
                         error
                     });
-                }
-   }
+                
 
 
-    render() {
+    render(); {
         let { text } = this.state;
         return (
             <div className="AutoCompleteText">
@@ -71,7 +70,8 @@ export default class Photo extends React.Component {
     }
 
 
-}
+});
 
 
 
+   }}
