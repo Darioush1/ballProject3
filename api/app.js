@@ -1,4 +1,4 @@
-var createError = require('http-errors');
+//var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
@@ -44,7 +44,7 @@ app.use(function(req, res, next){
 	res.locals.connection = mysql.createConnection({
 		host     : 'localhost',
 		user     : 'root',
-		password : 'RIPsonics9596',
+		password : 'bone1472',
 		database : 'nba_stats'
 	});
 	res.locals.connection.connect(
@@ -64,9 +64,9 @@ app.use('/api/player1', apiRoutes);
 app.use('/api/teamA', teamA);
 app.use('/api/teamB', teamB);
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+/*app.use(function(req, res, next) {
   next(createError(404));
-});
+});*/
 
 // error handler
 app.use(function(err, req, res, next) {
