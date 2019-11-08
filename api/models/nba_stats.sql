@@ -4,10 +4,37 @@ USE `nba_stats`;
 
 USE nba_stats;
 
+create TABLE teamA (
+id int(11) NOT NULL AUTO_INCREMENT,
+  Player varchar(25) DEFAULT NULL,
+  Year varchar(12) DEFAULT NULL,
+  Season varchar(5) DEFAULT NULL,
+  Team varchar(45) DEFAULT NULL,
+  GP int(11) DEFAULT NULL,
+  Min decimal(12,2) DEFAULT NULL,
+  PPG decimal(12,2) DEFAULT NULL,
+  Oreb decimal(12,2) DEFAULT NULL,
+  Dreb decimal(12,2) DEFAULT NULL,
+  Reb decimal(12,2) DEFAULT NULL,
+  Ast decimal(12,2) DEFAULT NULL,
+Stl decimal(12,2) DEFAULT NULL,
+  Blk decimal(12,2) DEFAULT NULL,
+  `TO` decimal(12,2) DEFAULT NULL,
+  PF decimal(12,2) DEFAULT NULL,
+  FGM decimal(12,2) DEFAULT NULL,
+  FGA decimal(12,2) DEFAULT NULL,
+  `FG%` decimal(12,3) DEFAULT NULL,
+  `3PTM` decimal(12,2) DEFAULT NULL,
+  `3PTA` decimal(12,2) DEFAULT NULL,
+  `3PT%` decimal(12,3) DEFAULT NULL,
+  FTM decimal(12,2) DEFAULT NULL,
+  FTA decimal(12,2) DEFAULT NULL,
+  `FT%` decimal(12,3) DEFAULT NULL,
+  PRIMARY KEY (id)
+)
 
 
-
-create TABLE teamB (
+create TABLE teamA (
 id int(11) NOT NULL AUTO_INCREMENT,
   Player varchar(25) DEFAULT NULL,
   Year varchar(12) DEFAULT NULL,
@@ -63,9 +90,8 @@ CREATE TABLE `nbastats` (
   `FTM` decimal(12,2) DEFAULT NULL,
   `FTA` decimal(12,2) DEFAULT NULL,
   `FT%` decimal(12,3) DEFAULT NULL,
-  PRIMARY KEY (''),
-  KEY `GP_index` (`GP`)
-) ENGINE=InnoDB AUTO_INCREMENT=531 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  PRIMARY KEY ('')
+) 
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --

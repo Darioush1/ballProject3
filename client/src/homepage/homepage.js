@@ -55,7 +55,7 @@ class HomePage extends React.Component {
 
     //this function will get teamA from localhost/api/teamA
     teamA = () => {
-        api.getPlayers().then(stats => {
+        api.getPlayerA().then(stats => {
         
             this.setState({
                 teamA:stats.data
@@ -65,7 +65,7 @@ class HomePage extends React.Component {
 
 //this function will get teamA from localhost/api/teamB
     teamB = () => {
-        api.getPlayers().then(stats => {
+        api.getPlayerB().then(stats => {
             this.setState({
                 teamB:stats.data
                 })
@@ -80,16 +80,16 @@ class HomePage extends React.Component {
     }
 
     //ideally this will clear the team's based on their ideas
-    clearTeams = (team) => {
-        if (this.state.teamA.id === undefined && this.state.teamB.id === undefined) {
-            console.log("Teams Empty")
-        } else { 
-            const teamA = this.state.player2;
-            // const emptyA = teamA.map(teamA =>
-            //     teamA.id)
-            // this.clearTeam1
-        }
-    }
+    // clearTeams = (team) => {
+    //     if (this.state.teamA.id === undefined && this.state.teamB.id === undefined) {
+    //         console.log("Teams Empty")
+    //     } else { 
+    //         const teamA = this.state.player2;
+    //         // const emptyA = teamA.map(teamA =>
+    //         //     teamA.id)
+    //         // this.clearTeam1
+    //     }
+    // }
 
 
 
@@ -133,6 +133,7 @@ class HomePage extends React.Component {
         console.log("Inside myCallBack ", this.state.userInput)
     }
 
+    //getting data from the autocomplete functions
     updatePlayer1Name = (userInput) => {
         this.setState({
             player1: userInput
@@ -160,17 +161,17 @@ class HomePage extends React.Component {
                         <h2 className="text-white">COMPARE PLAYERS</h2>
                         <div className="card">
                             <div className="card-body">
-                                <h5 className="card-title">ENTER PLAYER NAMES</h5>
+                                <h5 className="card-title">ONE V ONE</h5>
                                 <form onSubmit={this.addPlayer}>
                                     <div className="form-group">
-                                        <label htmlFor="playerName1">PLAYER NAME 1</label>
+                                        <label htmlFor="playerName1">PLAYER A</label>
                                         <AutoCompleteText
                                             items={NAMES}
                                             updatePlayer1 = {this.updatePlayer1Name.bind(this)}
                                         />
                                     </div>
                                     <div className="form-group">
-                                        <label htmlFor="playerName2">PLAYER NAME 2</label>
+                                        <label htmlFor="playerName2">PLAYER B</label>
                                         <AutoCompleteText2 
                                         items={NAMES}
                                         updatePlayer2 = {this.updatePlayer2Name.bind(this)}
@@ -181,9 +182,9 @@ class HomePage extends React.Component {
                                         type="button"
                                         className="btn btn-primary"
                                         onClick={this.addPlayer1}
-                                    >Add {this.state.player1} </button>
+                                    >TEAM A</button>
                                     <button type="button" className="btn btn-primary"
-                                        onClick={this.addPlayer2}>player2team2</button>
+                                        onClick={this.addPlayer2}>TEAM B</button>
                                 </form>
                             </div>
                         </div>
@@ -192,20 +193,20 @@ class HomePage extends React.Component {
                         <h2 className="text-white">COMPARE TEAMS</h2>
                         <div className="card">
                             <div className="card-body">
-                                <h5 className="card-title">ENTER TEAM NAMES</h5>
+                                <h5 className="card-title">TEAMS</h5>
                                 <form onSubmit={this.submitTeams}>
                                     <div className="form-group">
-                                        <label htmlFor="teamName1">TEAM NAME 1</label>
+                                        <label htmlFor="teamName1">TEAM A</label>
                                         <AutoCompleteText items={Teams} />
                                         
                                     </div>
                                     <div className="form-group">
-                                        <label htmlFor="teamName2">TEAM NAME 2</label>
+                                        <label htmlFor="teamName2">TEAM B</label>
                                         <AutoCompleteText items={Teams} />
                                         {/* this is where the input is */}
                                         {/* <input type="text" defaultValue={this.state.team2} onChange={() => { }} onBlur={this.updateTeam2} className="form-control" id="teamName2" aria-describedby="teamName2" placeholder="Enter Team Name 2" /> */}
                                     </div>
-                                    <button type="submit" className="btn btn-primary" onClick={this.get1} >SUBMIT</button>
+                                    <button type="submit" className="btn btn-primary" onClick={this.get1} >SWISH</button>
                                 </form>
                             </div>
                         </div>

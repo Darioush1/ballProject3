@@ -73,7 +73,7 @@ export default class AutoCompleteText extends React.Component {
                     onClick= {this.updatePlayer.bind(this)}
                     type="button"
                     className="btn btn-primary"
-                >SUBMIT</button>
+                >LOCK IN</button>
             </div>
 
         )

@@ -1,6 +1,7 @@
 import axios from "axios";
 
 export default {
+    //this gets all the player data
     getPlayers: function (req,res) {
         console.log()
         return axios.get("http://localhost:3001/api/player1/", )
@@ -9,6 +10,11 @@ export default {
     getPlayerA: function (req,res) {
         //console.log("getPlayers called")
         return axios.get("http://localhost:3001/api/teamA/", )
+    },
+
+    getPlayerB: function (req,res) {
+        //console.log("getPlayers called")
+        return axios.get("http://localhost:3001/api/teamB/", )
     },
 
     savePlayer1: function (player1Stats) {
