@@ -1,9 +1,33 @@
 import React, { Component } from 'react';
 import CanvasJSReact from '../../assets/canvasjs.react';
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
+import api from '../../utils/API';
+
+
  
 // console.log(allPlayers);
 class ScatterChart extends Component {
+
+	state = {
+        
+        teamA: [],
+        teamB:[]
+        //There is not cap to the number of players you can add to a team yet, I am also working on clearing TEAMA and TEAMB when the component mounts. 
+    };
+
+
+
+	getPlayerA1 = () => {
+		//getPlayerA should be labeled the same thing as what ever the axios.get("http://localhost:3001/api/teamA/")  is in teh utils/Api app
+		api.getPlayerA().then(stats => {
+			
+		this.setState({
+			teamA:stats.data
+			})
+		}).catch(err => console.log("error in getPLayers api.js", err));
+	}
+
+
 	render() {
 		const options = {
 			theme: "dark2",

@@ -12,6 +12,11 @@ export default {
         return axios.get("http://localhost:3001/api/teamA/", )
     },
 
+    getPlayerB: function (req,res) {
+        //console.log("getPlayers called")
+        return axios.get("http://localhost:3001/api/teamB/", )
+    },
+
     savePlayer1: function (player1Stats) {
         
         return axios.post("http://localhost:3001/api/teamA/", player1Stats)

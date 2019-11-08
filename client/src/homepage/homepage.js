@@ -55,7 +55,7 @@ class HomePage extends React.Component {
 
     //this function will get teamA from localhost/api/teamA
     teamA = () => {
-        api.getPlayers().then(stats => {
+        api.getPlayerA().then(stats => {
         
             this.setState({
                 teamA:stats.data
@@ -65,7 +65,7 @@ class HomePage extends React.Component {
 
 //this function will get teamA from localhost/api/teamB
     teamB = () => {
-        api.getPlayers().then(stats => {
+        api.getPlayerB().then(stats => {
             this.setState({
                 teamB:stats.data
                 })
@@ -80,21 +80,16 @@ class HomePage extends React.Component {
     }
 
     //ideally this will clear the team's based on their ideas
-    clearTeams = (team) => {
-        if (this.state.teamA.id === undefined && this.state.teamB.id === undefined) {
-            console.log("Teams Empty")
-        } else { 
-            const teamA = this.state.player2;
-<<<<<<< HEAD
-            const emptyA = teamA.map(teamA =>
-                teamA.id)
-=======
-            // const emptyA = teamA.map(teamA =>
-            //     teamA.id)
->>>>>>> 5ac4f9d58b75d3c63c610021dfc0b68164164ab9
-            // this.clearTeam1
-        }
-    }
+    // clearTeams = (team) => {
+    //     if (this.state.teamA.id === undefined && this.state.teamB.id === undefined) {
+    //         console.log("Teams Empty")
+    //     } else { 
+    //         const teamA = this.state.player2;
+    //         // const emptyA = teamA.map(teamA =>
+    //         //     teamA.id)
+    //         // this.clearTeam1
+    //     }
+    // }
 
 
 
@@ -138,6 +133,7 @@ class HomePage extends React.Component {
         console.log("Inside myCallBack ", this.state.userInput)
     }
 
+    //getting data from the autocomplete functions
     updatePlayer1Name = (userInput) => {
         this.setState({
             player1: userInput
